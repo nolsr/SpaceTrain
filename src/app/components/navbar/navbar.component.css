@@ -1,0 +1,55 @@
+.wrapper {
+    height: 115px;
+    width: 100vw;
+}
+
+.title {
+    position: absolute;
+    left: 2rem;
+    height: 115px;
+    display: flex;
+    align-items: center;
+    color: white;
+    font-family: ethnocentric, sans-serif;
+    text-transform: uppercase;
+}
+.title a {
+    font-size: 3rem;
+}
+.title a:hover {
+    box-shadow: none;
+    /* font-weight: normal; */
+}
+
+
+.links {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+a {
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    text-decoration: none;
+    margin: 0 1rem;
+    transition: all 0.5s;
+    color: white;
+}
+
+a:visited {
+    color: white;
+}
+
+a:hover {
+    box-shadow: 0px 2px 0px 0px #FFFFFF;
+    /* font-weight: bold; */
+}
+
+
+.active {
+    box-shadow: 0px 2px 0px 0px #FFFFFF;
+    /* font-weight: bold; */
+}
