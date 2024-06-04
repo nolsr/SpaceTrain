@@ -34,6 +34,10 @@ h1{
     justify-content: center;
 }
 
-.button{
-
+button {
+    padding: 0.5rem 3rem;
+    font-size: 2.5rem;
+    font-family: new-science;
+    font-weight: 100;
+    line-height: 3rem;
 }
