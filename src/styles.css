@@ -1,4 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+* {box-sizing: border-box;}
+*::-webkit-scrollbar {
+    display: none;
+  }
+
 body {
     margin: 0;
     background-color: black;
@@ -12,6 +17,10 @@ h1 {
 }
 h3 {
     text-transform: uppercase;
+}
+h2 {
+    text-transform: uppercase;
+    margin-bottom: -1.5%;
 }
 
 button {
@@ -37,9 +46,9 @@ button.primary:hover {
 
 button.secondary { 
     border: none;
-    background-color: #1c4da8;
+    background-color: #0071e3;
     color: white;
 }
 button.secondary:hover {
-    background-color: #11316d;
+    background-color: #0052a3;
 }

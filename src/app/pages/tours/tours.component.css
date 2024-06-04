@@ -1,5 +1,6 @@
 .Touren{
     line-height: 1.4;
+    overflow: hidden;
 }
 
 .video1{
@@ -18,27 +19,32 @@ h1{
 }
 
 .Tourblock{
-    padding: 5%;
+    padding: 0% 15% 5%;
     display: flex;
-    flex-direction: row;
-    margin-right: 5%;
-    margin-left: 5%;
+    flex-direction: column;
+}
+.Tourblock2{
+    padding: 0% 15% 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: right;
 }
 .Textblock{
     width: 50%;
 }
 
 .Buttonblock{
+    padding: 1% 0%;
     width: 50%;
-    align-items: center;
     display:flex;
-    justify-content: center;
+    justify-content: left;
 }
 
 button {
-    padding: 0.5rem 3rem;
-    font-size: 2.5rem;
+    padding: 0.5rem 3rem 0.1rem;
+    font-size: 1.5rem;
     font-family: new-science;
-    font-weight: 100;
+    font-weight: 300;
     line-height: 3rem;
 }
