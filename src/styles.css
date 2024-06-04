@@ -14,3 +14,33 @@ h1 {
 h3 {
     text-transform: uppercase;
 }
+
+button {
+    padding: 0.5rem 1.25rem;
+    border-radius: 10rem;
+}
+
+button:hover {
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+button.primary {
+    border: 1px solid white;
+    background-color: transparent;
+    text-transform: uppercase;
+    color: white;
+}
+button.primary:hover {
+    background-color: white;
+    color: black;
+}
+
+button.secondary { 
+    border: none;
+    background-color: #1c4da8;
+    color: white;
+}
+button.secondary:hover {
+    background-color: #11316d;
+}
