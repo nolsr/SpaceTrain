@@ -1,6 +1,6 @@
 export class User {
   constructor(
-    public id: string,
+    public id: number,
     public name: string,
     public email: string,
     public password: string,
@@ -11,18 +11,17 @@ export class User {
 
 export class Buchung {
   constructor(
-    public id: string,
+    public id: number,
     public tour: Tour,
     public preis: number,
     public besitzer: User,
   ) {
   }
-
 }
 
 export class Tour  {
   constructor(
-    public id: string,
+    public id: number,
     public name: string,
     public rocket: Rocket,
     public crew: Crewmember[],
@@ -32,7 +31,7 @@ export class Tour  {
 
 export class Rocket {
   constructor(
-    public id: string,
+    public id: number,
     public name: string,
   ) {
   }
@@ -40,7 +39,7 @@ export class Rocket {
 
 export class Crewmember {
   constructor(
-    public id: string,
+    public id: number,
     public name: string,
   ) {
   }
