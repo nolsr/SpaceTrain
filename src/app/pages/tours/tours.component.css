@@ -1,0 +1,39 @@
+.Touren{
+    line-height: 1.4;
+}
+
+.video1{
+    display:block;
+    margin-right: auto;
+    margin-left: auto;
+    width: 75%;
+}
+.video2{
+    display:block;
+    width: 95%;
+    height:auto;
+}
+h1{
+    text-align: center;
+}
+
+.Tourblock{
+    display: flex;
+    flex-direction: row;
+    margin-right: 5%;
+    margin-left: 5%;
+}
+.Textblock{
+    width: 50%;
+}
+
+.Buttonblock{
+    width: 50%;
+    align-items: center;
+    display:flex;
+    justify-content: center;
+}
+
+.button{
+
+}
