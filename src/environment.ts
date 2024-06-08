@@ -13,8 +13,12 @@ export const environment = {
       register: '/user',
     },
     touren: {
-      getAll: 'touren',
-      getById: 'touren',
+      getAll: '/touren',
+      getById: '/touren',
+    },
+    rockets: {
+      getAll: '/rocket',
+      getById: '/rocket',
     }
   },
 };

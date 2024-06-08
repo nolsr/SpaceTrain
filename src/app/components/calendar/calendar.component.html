@@ -1,0 +1,16 @@
+<div class="calendar">
+    <div class="month">
+        <span class="nav" (click)="prevMonth()"><</span>
+                {{ currentMonth }}
+        <span class="nav" (click)="nextMonth()">></span>
+    </div>
+    <div class="dates">
+        <div class="day" *ngFor="let day of weekdays">{{ day }}</div>
+    </div>
+    <div class="spacer"></div>
+    <div class="dates">
+        <div class="date" *ngFor="let day of days"
+            [ngClass]="{'inactive': !day.thisMonth, 'selected': selectedDate == day.isoString}"
+            (click)="selectDate(day)">{{ day.day }}</div>
+    </div>
+</div>
