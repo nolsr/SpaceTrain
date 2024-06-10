@@ -4,8 +4,6 @@ import {Rocket} from "../../../../core/spacetrain.model";
 
 @Component({
   selector: 'app-rocket-list',
-  standalone: true,
-  imports: [],
   templateUrl: './rocket-list.component.html',
   styleUrl: './rocket-list.component.css'
 })
