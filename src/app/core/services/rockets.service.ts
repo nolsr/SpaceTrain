@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import {ApiService} from "../../../core/services/api.service";
+import {ApiService} from "./api.service";
 import {Observable} from "rxjs";
-import {Rocket} from "../../../core/spacetrain.model";
-import {environment} from "../../../../environment";
+import {Rocket} from "../spacetrain.model";
+import {environment} from "../../../environment";
 
 @Injectable({
   providedIn: 'root'

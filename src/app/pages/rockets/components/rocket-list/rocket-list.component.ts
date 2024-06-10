@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {RocketsService} from "../../services/rockets.service";
+import {RocketsService} from "../../../../core/services/rockets.service";
 import {Rocket} from "../../../../core/spacetrain.model";
 
 @Component({
