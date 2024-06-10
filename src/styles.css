@@ -1,7 +1,54 @@
 /* You can add global styles to this file, and also import other style files */
+* {box-sizing: border-box;}
+*::-webkit-scrollbar {
+    display: none;
+  }
+
 body {
     margin: 0;
     background-color: black;
     color: white;
     font-family: new-science, sans-serif;
+}
+h1 {
+    font-family: ethnocentric, sans-serif;
+    text-transform: uppercase;
+    font-size: 5rem;
+}
+h3 {
+    text-transform: uppercase;
+}
+h2 {
+    text-transform: uppercase;
+    margin-bottom: -1.5%;
+}
+
+button {
+    padding: 0.5rem 1.25rem;
+    border-radius: 10rem;
+}
+
+button:hover {
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+button.primary {
+    border: 1px solid white;
+    background-color: transparent;
+    text-transform: uppercase;
+    color: white;
+}
+button.primary:hover {
+    background-color: white;
+    color: black;
+}
+
+button.secondary { 
+    border: none;
+    background-color: #0071e3;
+    color: white;
+}
+button.secondary:hover {
+    background-color: #0052a3;
 }
