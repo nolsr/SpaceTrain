@@ -42,18 +42,50 @@ video {
     z-index: 1;
     color: white; /* Weißer Text für bessere Lesbarkeit auf dunklem Hintergrund */
     text-align: center;
-    padding: 20px;
+    padding: 50px;
   }
   
 
   .content blockquote {
     font-size: 2vw; /* Responsive Schriftgröße basierend auf der Viewport-Breite */
-    margin: 20px auto;
-    max-width: 600px; /* Maximale Breite des Zitats für bessere Lesbarkeit */
-    padding: 10px;
+    margin: 40px auto;
+    margin-top: 20px;
+    max-width: 1000px; /* Maximale Breite des Zitats für bessere Lesbarkeit */
+    padding: 30px;
+    margin-bottom: 100px;
     border-left: 5px solid #ffffff; /* Stil für das Zitat */
   }
   
+  .containercountdown {
+    position: relative;
+    z-index: -1;
+    color: white;
+    text-align: center;
+    margin-top: 1000px;
+    font-size: 2em; /* Passe die Schriftgröße nach Bedarf an */
+  }
+
+  .mission-text-container {
+    text-align: center;
+    max-width: 1100px; /* Maximale Breite des Textes */
+    margin: 0 auto; /* Horizontal zentrieren */
+  }
+  
+
+  .mission-text-container h2 {
+    margin-top: 150px;
+    margin-bottom: 20px; /* Abstand zwischen h2 und p */
+    font-size: 2em;
+  }
+
+  .mission-text-container p {
+    font-size: 20px;
+    margin-bottom: 150px;
+
+  }
+  
+  
+
   /* Media Queries für weitere Anpassungen */
   @media (max-width: 768px) {
     .container h1 {
@@ -82,3 +114,46 @@ video {
       font-size: 5vw; /* Noch größere Schriftgröße für sehr kleine Bildschirme */
     }
   }
+
+
+  /* Responsive Anpassungen */
+@media (max-width: 1024px) {
+  .mission-text-container {
+    max-width: 90%; /* Reduzieren der maximalen Breite auf 90% der Bildschirmbreite */
+  }
+  
+  .mission-text-container h2 {
+    font-size: 1.8em; /* Kleinere Schriftgröße für mittlere Bildschirme */
+  }
+
+  .mission-text-container p {
+    font-size: 18px; /* Kleinere Schriftgröße für mittlere Bildschirme */
+  }
+}
+
+@media (max-width: 768px) {
+  .mission-text-container h2 {
+    font-size: 1.6em; /* Noch kleinere Schriftgröße für kleinere Bildschirme */
+    margin-top: 100px;
+  }
+
+  .mission-text-container p {
+    font-size: 16px; /* Noch kleinere Schriftgröße für kleinere Bildschirme */
+  }
+}
+
+@media (max-width: 480px) {
+  .mission-text-container h2 {
+    font-size: 1.4em; /* Noch kleinere Schriftgröße für sehr kleine Bildschirme */
+    margin-top: 80px;
+  }
+
+  .mission-text-container p {
+    font-size: 14px; /* Noch kleinere Schriftgröße für sehr kleine Bildschirme */
+  }
+}
+
+
+
+
+
