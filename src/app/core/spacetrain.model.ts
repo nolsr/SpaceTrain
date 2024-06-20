@@ -31,8 +31,13 @@ export class Tour  {
 
 export class Rocket {
   constructor(
-    public id: number,
     public name: string,
+    public hoehe: string,
+    public durchmesser: string,
+    public schiffvolumen: string,
+    public traegervolumen: string,
+    public startnutzlastmasse: string,
+    public rueckkehrnutzlastmasse: string,
   ) {
   }
 }
