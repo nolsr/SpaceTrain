@@ -84,6 +84,7 @@ h2 {
   left: 50%;
   width: 1100px;
   height: auto;
+  z-index: -1;
 }
 
 .kreis2 {
