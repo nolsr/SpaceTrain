@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 10. Jun 2024 um 17:55
--- Server-Version: 10.4.14-MariaDB
--- PHP-Version: 7.4.9
+-- Erstellungszeit: 24. Jun 2024 um 12:33
+-- Server-Version: 10.4.24-MariaDB
+-- PHP-Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -115,16 +115,22 @@ INSERT INTO `preisklasse` (`preisklassennr`, `multiplikator`) VALUES
 
 CREATE TABLE `rakete` (
   `raketennr` int(11) NOT NULL,
-  `bezeichnung` varchar(255) NOT NULL
+  `name` varchar(255) NOT NULL,
+  `hoehe` float UNSIGNED NOT NULL,
+  `durchmesser` float UNSIGNED NOT NULL,
+  `schiffvolumen` float UNSIGNED NOT NULL,
+  `traegervolumen` int(10) UNSIGNED NOT NULL,
+  `startnutzlastmasse` int(10) UNSIGNED NOT NULL,
+  `rueckkehrnutzlastmasse` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Daten für Tabelle `rakete`
 --
 
-INSERT INTO `rakete` (`raketennr`, `bezeichnung`) VALUES
-(1, 'Stellar Voyager'),
-(2, 'Nebula Crusader');
+INSERT INTO `rakete` (`raketennr`, `name`, `hoehe`, `durchmesser`, `schiffvolumen`, `traegervolumen`, `startnutzlastmasse`, `rueckkehrnutzlastmasse`) VALUES
+(1, 'Stellar Voyager', 0, 0, 0, 0, 0, 0),
+(2, 'Nebula Crusader', 0, 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
