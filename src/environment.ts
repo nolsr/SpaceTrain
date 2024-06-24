@@ -6,7 +6,7 @@
 // environments/environment.prod.ts (für Produktion)
 export const environment = {
   production: true,
-  apiBaseUrl: 'hier Server url einfügen',
+  apiBaseUrl: 'http://localhost:8080',
   endpoints: {
     user: {
       login: '/user/login',

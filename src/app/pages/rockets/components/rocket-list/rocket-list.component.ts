@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {RocketsService} from "../../../../core/services/rockets.service";
 import {Rocket} from "../../../../core/spacetrain.model";
 
@@ -7,7 +7,7 @@ import {Rocket} from "../../../../core/spacetrain.model";
   templateUrl: './rocket-list.component.html',
   styleUrl: './rocket-list.component.css'
 })
-export class RocketListComponent {
+export class RocketListComponent implements OnInit{
   protected rockets: Rocket[] = [
     new Rocket("Rakete 1", "8,1 m / 26,7 ft", "4 / 13 ft", " 9,3 m³ / 328 ft³",
     "37 m³ / 1300 ft³", "6.000 kg / 13.228 lbs", "3.000 kg / 6.614 lbs"),
@@ -20,6 +20,10 @@ export class RocketListComponent {
 
 
   constructor(private rocketService: RocketsService) {
+  }
+
+  ngOnInit() {
+    this.getAll()
   }
 
   isLeft(index: number): boolean {
