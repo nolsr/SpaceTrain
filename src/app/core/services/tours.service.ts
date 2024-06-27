@@ -25,6 +25,10 @@ export class ToursService {
     });
   }
 
+  public getCountdownDate(): Observable<any> {
+    return this.apiService.get<any>(`${this.toursEndpoints.getCountdown}`);
+  }
+
   public getToursdatesByTourId(id: number, rockets: Rocket[], staff: Crewmember[]): Observable<any> {
     return new Observable(observer => {
       this.apiService.get<Tourtermin[]>(`${this.toursEndpoints.getTourdatesByTournr}/${id}`).subscribe({

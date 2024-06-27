@@ -9,7 +9,7 @@ router.get('/', async (req, res) => {
             res.status(200).json(result);
         });
     } catch (err) {
-        res.status(500).json({message: JSON.stringify(err)})
+        res.status(500).json({ message: JSON.stringify(err) })
     }
 });
 
@@ -21,8 +21,20 @@ router.get('/dates/:tournr', async (req, res) => {
             res.status(200).json(result);
         });
     } catch (err) {
-        res.status(500).json({message: JSON.stringify(err)})
+        res.status(500).json({ message: JSON.stringify(err) })
     }
 });
+
+router.get('/next', async (req, res) => {
+    try {
+        db.query(`SELECT datum FROM tourtermin WHERE datum >= CURDATE() ORDER BY datum ASC LIMIT 1;`, (error, result) => {
+            if (error) throw error;
+            res.status(200).json(result);
+        });
+    } catch (err) {
+        res.status(500).json({ message: JSON.stringify(err) })
+    }
+});
+
 
 module.exports = router;

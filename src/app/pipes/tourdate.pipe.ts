@@ -8,6 +8,9 @@ import { Tourtermin } from '../core/spacetrain.model';
 export class TourdatePipe implements PipeTransform {
 
   transform(value: { isoString: string, tourdates: Tourtermin[] },): unknown {
-    return value.tourdates.some(t => t.datum == value.isoString);
+    const inputDate = new Date(value.isoString);
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    return inputDate >= today && value.tourdates.some(t => t.datum == value.isoString);
   }
 }

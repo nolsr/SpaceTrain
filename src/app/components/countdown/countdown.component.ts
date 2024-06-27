@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-countdown',
@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./countdown.component.css']
 })
 export class CountdownComponent {
+  @Input() countdownDate = '';
   endDate = new Date('2024-12-31T00:00:00');
   remainingTime: string = '';
   intervalId: any;
@@ -25,7 +26,7 @@ export class CountdownComponent {
 
   updateRemainingTime() {
     const now = new Date().getTime();
-    const distance = this.endDate.getTime() - now;
+    const distance = new Date(this.countdownDate + 'T00:00:00').getTime() - now;
 
     if (distance < 0) {
       this.remainingTime = 'Countdown beendet!';

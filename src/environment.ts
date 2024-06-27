@@ -24,6 +24,7 @@ export const environment = {
     tours: {
       getAll: '/tours',
       getTourdatesByTournr: '/tours/dates',
+      getCountdown: '/tours/next'
     },
     staff: {
       getAll: '/staff'

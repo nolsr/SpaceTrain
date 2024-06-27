@@ -52,7 +52,8 @@
 }
 
 .inactive {
-    filter: brightness(0%);
+    filter: brightness(0%) !important;
+    pointer-events: none;
 }
 
 .selected { 
