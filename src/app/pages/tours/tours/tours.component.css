@@ -13,21 +13,35 @@
     left: 50%;
     bottom: -80vh;
 }
-.video1{
-    display:block;
+.headline-container {
+    position: relative;
+    width: 75%;
     margin-right: auto;
     margin-left: auto;
-    width: 75%;
+}
+
+.video1 {
+    display: block;
+    width: 100%;
+    z-index: 1;
+}
+.Headline {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    color: white; /* Farbe der Überschrift */
+    text-align: center;
+}
+h1 {
+    margin: 0; /* Entfernt Standardabstand */
 }
 .video2{
     display:block;
     width: 95%;
     height:auto;
 }
-h1{
-    text-align: center;
-}
-
 .Tourblock{
     padding: 0% 15% 5%;
     display: flex;
