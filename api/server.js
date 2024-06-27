@@ -28,11 +28,6 @@ app.use(express.static(path.join(__dirname, '/dist/spacetrain')));
 
 // ROUTEN //
 app.use('/rockets', rocketsRoutes);
-app.get('/test', (req, res) => {
-      res.json({message: 'ok'});
-});
-
-
 
 // Error Middleware
 app.use((err, req, res, next) => {

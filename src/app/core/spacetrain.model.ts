@@ -49,3 +49,12 @@ export class Crewmember {
   ) {
   }
 }
+
+export enum RocketInfoType {
+  HOEHE,
+  DURCHMESSER,
+  SCHIFFVOLUMEN,
+  TRAEGERVOLUMEN,
+  STARTNUTZLASTMASSE,
+  RUECKKEHRNUTZLASTMASSE
+}

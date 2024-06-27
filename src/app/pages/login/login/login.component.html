@@ -1,0 +1,16 @@
+<video class="video1" src="../../../../assets/Buchung/1237171_Abstract_Liquid_Backgrounds_1920x1080.mp4" autoplay loop></video>
+
+<h1>Sign in</h1>
+
+<form [formGroup]="loginForm" (ngSubmit)="login()" class="login-form">
+    <div class="input-wrapper">
+        <input name="email" type="email" formControlName="email" required [ngClass]="{'invalid': loginForm.controls['email'].errors && !loginForm.controls['email'].pristine}" placeholder="Email">
+    </div>
+
+    <div class="input-wrapper">
+        <input name="password" type="password" formControlName="password" required
+            [ngClass]="{'invalid': loginForm.controls['password'].errors && !loginForm.controls['password'].pristine}" placeholder="Passwort">
+    </div>
+
+    <button class="login" [disabled]="loginForm.invalid" (click)="login()">Login</button>
+</form>
