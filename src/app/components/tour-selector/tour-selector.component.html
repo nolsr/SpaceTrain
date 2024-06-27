@@ -1,0 +1,3 @@
+<div class="tour" *ngFor="let tour of tours" (click)="selectedTourChanged.emit(tour.tournr)" [ngClass]="{'active': tour.tournr == selectedTour}">
+    {{ tour.name }}
+</div>

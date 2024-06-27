@@ -15,7 +15,7 @@ export class ToursComponent implements OnInit {
     this.toursService.getTours();
   }
 
-  public gotoTickets(tour: string) {
+  public gotoTickets(tour: number) {
     this.router.navigate(['/booking', tour]);
   }
 }

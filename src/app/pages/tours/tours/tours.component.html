@@ -7,14 +7,14 @@
     <div class="Tourblock">
         <div class="Textblock">
             <div>
-                <h2>{{toursService.tours[2].name}}</h2>
+                <h2>{{toursService.tours[2]?.name}}</h2>
             </div>
             <div>
-                <p>{{toursService.tours[2].beschreibung}}</p>
+                <p>{{toursService.tours[2]?.beschreibung}}</p>
             </div>
         </div>
         <div class="Buttonblock">
-            <button class="secondary" (click)="gotoTickets('1')">Tickets</button>
+            <button class="secondary" (click)="gotoTickets(3)">Tickets</button>
         </div>
     </div>
 
@@ -23,14 +23,14 @@
     <div class="Tourblock2">
         <div class="Textblock">
             <div>
-                <h3>{{toursService.tours[1].name}}</h3>
+                <h3>{{toursService.tours[1]?.name}}</h3>
             </div>
             <div>
-                <p>{{toursService.tours[1].beschreibung}}</p>
+                <p>{{toursService.tours[1]?.beschreibung}}</p>
             </div>
         </div>
         <div class="Buttonblock" style="justify-content: right">
-            <button class="secondary" (click)="gotoTickets('2')">Tickets</button>
+            <button class="secondary" (click)="gotoTickets(2)">Tickets</button>
         </div>
     </div>
 
@@ -39,14 +39,14 @@
     <div class="Tourblock" style="padding-top: 5%">
         <div class="Textblock">
             <div>
-                <h3>{{toursService.tours[0].name}}</h3>
+                <h3>{{toursService.tours[0]?.name}}</h3>
             </div>
             <div>
-                <p>{{toursService.tours[0].beschreibung}}</p>
+                <p>{{toursService.tours[0]?.beschreibung}}</p>
             </div>
         </div>
         <div class="Buttonblock">
-            <button class="secondary" (click)="gotoTickets('3')">Tickets</button>
+            <button class="secondary" (click)="gotoTickets(1)">Tickets</button>
         </div>
     </div>
 </div>

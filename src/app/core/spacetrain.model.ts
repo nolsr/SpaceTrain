@@ -1,6 +1,6 @@
 export class User {
   constructor(
-    public id: number,
+    public kundennr: number,
     public name: string,
     public email: string,
     public password: string,
@@ -11,7 +11,7 @@ export class User {
 
 export class Buchung {
   constructor(
-    public id: number,
+    public buchungsnr: number,
     public tour: Tour,
     public preis: number,
     public besitzer: User,
@@ -21,7 +21,7 @@ export class Buchung {
 
 export class Tour {
   constructor(
-    public id: number,
+    public tournr: number,
     public name: string,
     public ort: string,
     public preisklasse: number,
@@ -31,15 +31,25 @@ export class Tour {
 }
 
 export class Tourtermin {
+  public rocket: Rocket;
+  public crewmember: Crewmember;
   constructor(
-    public id: number,
-    public rocket: Rocket
+    public tourterminnr: number,
+    public datum: string,
+    public personalnr: number,
+    public raketennr: number,
+    rockets: Rocket[],
+    staff: Crewmember[]
   ) {
+    this.datum = this.datum.substring(0, 10);
+    this.rocket = rockets.find(r => r.raketennr == raketennr) || new Rocket(raketennr, '', '', '', '', '', '', '');
+    this.crewmember = staff.find(s => s.personalnr == personalnr) || new Crewmember(personalnr, '');
   }
 }
 
 export class Rocket {
   constructor(
+    public raketennr: number,
     public name: string,
     public hoehe: string,
     public durchmesser: string,
@@ -53,7 +63,7 @@ export class Rocket {
 
 export class Crewmember {
   constructor(
-    public id: number,
+    public personalnr: number,
     public name: string,
   ) {
   }

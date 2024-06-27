@@ -13,4 +13,16 @@ router.get('/', async (req, res) => {
     }
 });
 
+router.get('/dates/:tournr', async (req, res) => {
+    try {
+        const tournr = req.params['tournr'];
+        db.query(`SELECT * FROM tourtermin WHERE tournr = ${tournr}`, (error, result) => {
+            if (error) throw error;
+            res.status(200).json(result);
+        });
+    } catch (err) {
+        res.status(500).json({message: JSON.stringify(err)})
+    }
+});
+
 module.exports = router;

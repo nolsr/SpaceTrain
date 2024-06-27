@@ -16,15 +16,20 @@ export class RocketsService {
     private ngZone: NgZone
   ) { }
 
-  getRockets(): void {
-    this.apiService.get<Rocket[]>(`${this.rocketEndpoints.getAll}`).subscribe({
+  getRockets(): Observable<any> {
+    return new Observable(observer => {
+      this.apiService.get<Rocket[]>(`${this.rocketEndpoints.getAll}`).subscribe({
       next: (res: Array<Rocket>) => {
-        this.ngZone.run(() => {
-          console.log(res);
-          this.rockets = res;
-        });
-      },
-      error: err => console.error(err)
+          this.ngZone.run(() => {
+            this.rockets = res;
+            observer.next(this.rockets);
+          });
+        },
+        error: err => {
+          console.error(err);
+          observer.error(err);
+        }
+      });
     });
   }
 }

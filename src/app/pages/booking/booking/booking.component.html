@@ -1,3 +1,11 @@
+<video class="video1" src="../../../../assets/Buchung/1237171_Abstract_Liquid_Backgrounds_1920x1080.mp4" autoplay loop></video>
+
 <h1>Buchung</h1>
-<h3>Tour Buchen</h3>
-<app-calendar></app-calendar>
+
+<h4>Tour</h4>
+<app-tour-selector [tours]="toursService.tours" [selectedTour]="tour" (selectedTourChanged)="selectedTourChanged($event)"></app-tour-selector>
+
+<h4>Datum</h4>
+<app-calendar [tourdates]="toursService.tourdates"></app-calendar>
+
+<h4>Sitzplatz</h4>

@@ -12,7 +12,7 @@ export class RocketListComponent implements OnInit {
   constructor(public rocketService: RocketsService) { }
 
   ngOnInit() {
-    this.rocketService.getRockets();
+    this.rocketService.getRockets().subscribe();
   }
 
   isLeft(index: number): boolean {

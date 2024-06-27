@@ -1,14 +1,17 @@
-import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Tourtermin } from '../../core/spacetrain.model';
+import { TourdatePipe } from '../../pipes/tourdate.pipe';
 
 @Component({
   selector: 'app-calendar',
   templateUrl: './calendar.component.html',
   styleUrl: './calendar.component.css'
 })
-export class CalendarComponent implements OnInit {
-  private month = 0;
-  private year = 0;
+export class CalendarComponent implements OnInit, OnChanges {
+  @Input() tourdates: Array<Tourtermin> = [];
+
+  public month = 0;
+  public year = 0;
   private months = ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember']
   public weekdays = ['S', 'M', 'D', 'M', 'D', 'F', 'S']
 
@@ -16,10 +19,18 @@ export class CalendarComponent implements OnInit {
   public days: Array<CalendarDay> = [];
   public selectedDate = '';
 
+  constructor(private pipe: TourdatePipe) {}
+
   ngOnInit(): void {
     this.month = new Date().getMonth();
     this.year = new Date().getFullYear();
     this.fillCalendar();
+  }
+
+  ngOnChanges(sc: SimpleChanges): void {
+    if (sc['tourdates']) {
+      this.selectedDate = ''
+    }
   }
 
   private fillCalendar() {
@@ -43,7 +54,8 @@ export class CalendarComponent implements OnInit {
   }
 
   public selectDate(calendarDay: CalendarDay) {
-    if (!calendarDay.thisMonth) {
+    const isTourOnThisDay = this.pipe.transform({day: calendarDay.day, month: this.month + 1, year: this.year, tourdates: this.tourdates});
+    if (!calendarDay.thisMonth || !isTourOnThisDay) {
       return;
     }
     this.selectedDate = calendarDay.isoString;

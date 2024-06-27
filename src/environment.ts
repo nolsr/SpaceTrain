@@ -21,7 +21,11 @@ export const environment = {
       getById: '/rockets',
     },
     tours: {
-      getAll: '/tours'
+      getAll: '/tours',
+      getTourdatesByTournr: '/tours/dates',
+    },
+    staff: {
+      getAll: '/staff'
     }
   },
 };
