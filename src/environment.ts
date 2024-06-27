@@ -19,6 +19,9 @@ export const environment = {
     rockets: {
       getAll: '/rockets',
       getById: '/rockets',
+    },
+    tours: {
+      getAll: '/tours'
     }
   },
 };

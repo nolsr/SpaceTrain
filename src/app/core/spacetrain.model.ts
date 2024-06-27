@@ -19,12 +19,21 @@ export class Buchung {
   }
 }
 
-export class Tour  {
+export class Tour {
   constructor(
     public id: number,
     public name: string,
-    public rocket: Rocket,
-    public crew: Crewmember[],
+    public ort: string,
+    public preisklasse: number,
+    public beschreibung: string
+  ) {
+  }
+}
+
+export class Tourtermin {
+  constructor(
+    public id: number,
+    public rocket: Rocket
   ) {
   }
 }
