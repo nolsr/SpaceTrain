@@ -1,33 +1,24 @@
 <div class="container">
-  <video class="video1" src="../../../../assets/Raketen/1601356_Backgrounds_Animal_Science_1920x1080.mp4" autoplay loop></video>
+  <video class="video1" src="../../../../assets/Raketen/1601356_Backgrounds_Animal_Science_1920x1080.mp4" autoplay
+    loop></video>
   <h1>Raketen</h1>
-  <div class="row" *ngFor="let rakete of rockets; let i = index">
-    <div class="left" *ngIf="isLeft(i)">
+  <div class="row" *ngFor="let rakete of rocketService.rockets; let i = index">
+    <div [ngClass]="{'left': isLeft(i), 'right': !isLeft(i)}">
       <div class="item-content">
-        <div class="attribute"><h2>{{rakete.name}}</h2></div>
-        <div class="attribute">Höhe: {{rakete.hoehe}}</div>
-        <div class="attribute">Durchmesser: {{rakete.durchmesser}}</div>
-        <div class="attribute">Schiffsvolumen: {{rakete.schiffvolumen}}</div>
-        <div class="attribute">Trägervolumen: {{rakete.traegervolumen}}</div>
-        <div class="attribute">Startnutzlastmasse: {{rakete.startnutzlastmasse}}</div>
-        <div class="attribute">Rückkehrnutzlastmasse: {{rakete.rueckkehrnutzlastmasse}}</div>
-      </div>
-    </div>
-    <div class="right" *ngIf="!isLeft(i)">
-      <div class="item-content">
-        <div class="attribute"><h2>{{rakete.name}}</h2></div>
-        <div class="attribute">Höhe: {{rakete.hoehe}}</div>
-        <div class="attribute">Durchmesser: {{rakete.durchmesser}}</div>
-        <div class="attribute">Schiffsvolumen: {{rakete.schiffvolumen}}</div>
-        <div class="attribute">Trägervolumen: {{rakete.traegervolumen}}</div>
-        <div class="attribute">Startnutzlastmasse: {{rakete.startnutzlastmasse}}</div>
-        <div class="attribute">Rückkehrnutzlastmasse: {{rakete.rueckkehrnutzlastmasse}}</div>
+        <div class="attribute">
+          <h2>{{ rakete.name }}</h2>
+        </div>
+        <div class="attribute">Höhe: {{ rakete.hoehe | rocketInfo: RocketInfoType.HOEHE }}</div>
+        <div class="attribute">Durchmesser: {{ rakete.durchmesser | rocketInfo: RocketInfoType.DURCHMESSER  }}</div>
+        <div class="attribute">Schiffsvolumen: {{ rakete.schiffvolumen | rocketInfo: RocketInfoType.SCHIFFVOLUMEN }}</div>
+        <div class="attribute">Trägervolumen: {{ rakete.traegervolumen | rocketInfo: RocketInfoType.TRAEGERVOLUMEN }}</div>
+        <div class="attribute">Startnutzlastmasse: {{ rakete.startnutzlastmasse | rocketInfo: RocketInfoType.STARTNUTZLASTMASSE }}</div>
+        <div class="attribute">Rückkehrnutzlastmasse: {{ rakete.rueckkehrnutzlastmasse | rocketInfo: RocketInfoType.RUECKKEHRNUTZLASTMASSE }}</div>
       </div>
     </div>
   </div>
   <img class="kreis1" src="../../../../assets/Kreiselemente/Kreise-02(Niclas).svg" alt="Cooler Kreis">
   <img class="kreis2" src="../../../../assets/Kreiselemente/Kreise-02(Niclas).svg" alt="Cooler Kreis">
-  <img *ngIf="rockets.length < 4" class="kreis3" src="../../../../assets/Kreiselemente/Kreise-02(Niclas).svg" alt="Cooler Kreis">
+  <img class="kreis3" src="../../../../assets/Kreiselemente/Kreise-02(Niclas).svg" alt="Cooler Kreis">
   <img class="bar" src="../../../../assets/Raketen/bar.svg" alt="Coole Leiste">
 </div>
-

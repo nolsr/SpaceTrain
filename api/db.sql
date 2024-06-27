@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 24. Jun 2024 um 12:33
--- Server-Version: 10.4.24-MariaDB
--- PHP-Version: 8.1.6
+-- Erstellungszeit: 27. Jun 2024 um 15:51
+-- Server-Version: 10.4.14-MariaDB
+-- PHP-Version: 7.4.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -45,7 +45,7 @@ CREATE TABLE `buchungsitzplatz` (
   `buchungsitzplatznr` int(11) NOT NULL,
   `buchungsnr` int(11) NOT NULL,
   `sitzplatznr` int(11) NOT NULL,
-  `tournr` int(11) NOT NULL
+  `tourterminnr` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -129,8 +129,9 @@ CREATE TABLE `rakete` (
 --
 
 INSERT INTO `rakete` (`raketennr`, `name`, `hoehe`, `durchmesser`, `schiffvolumen`, `traegervolumen`, `startnutzlastmasse`, `rueckkehrnutzlastmasse`) VALUES
-(1, 'Stellar Voyager', 0, 0, 0, 0, 0, 0),
-(2, 'Nebula Crusader', 0, 0, 0, 0, 0, 0);
+(1, 'Stellar Voyager', 26, 5.3, 6.5, 23, 3850, 1900),
+(2, 'Nebula Crusader', 31, 6.4, 8.9, 35, 5000, 2300),
+(3, 'Galactic Pioneer', 37, 8.1, 9.3, 37, 6000, 3000);
 
 -- --------------------------------------------------------
 
@@ -169,21 +170,32 @@ INSERT INTO `sitzplatz` (`sitzplatznr`, `raketennr`, `preis`, `bezeichnung`) VAL
 
 CREATE TABLE `tour` (
   `tournr` int(11) NOT NULL,
-  `datum` date NOT NULL,
   `ort` varchar(255) NOT NULL,
-  `preisklassennr` int(11) NOT NULL,
-  `personalnr` int(11) NOT NULL,
-  `raketennr` int(11) NOT NULL
+  `preisklassennr` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Daten für Tabelle `tour`
 --
 
-INSERT INTO `tour` (`tournr`, `datum`, `ort`, `preisklassennr`, `personalnr`, `raketennr`) VALUES
-(1, '2024-07-11', 'Aurora Spaceport', 1, 3, 1),
-(2, '2024-07-30', 'Nebula Launch Facility', 2, 8, 2),
-(3, '2024-07-23', 'Starlight Base', 3, 6, 2);
+INSERT INTO `tour` (`tournr`, `ort`, `preisklassennr`) VALUES
+(1, 'Aurora Spaceport', 1),
+(2, 'Nebula Launch Facility', 2),
+(3, 'Starlight Base', 3);
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `tourtermin`
+--
+
+CREATE TABLE `tourtermin` (
+  `tourterminnr` int(11) NOT NULL,
+  `tournr` int(11) NOT NULL,
+  `datum` date NOT NULL,
+  `personalnr` int(11) NOT NULL,
+  `raketennr` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Indizes der exportierten Tabellen
@@ -203,7 +215,7 @@ ALTER TABLE `buchungsitzplatz`
   ADD PRIMARY KEY (`buchungsitzplatznr`),
   ADD KEY `bt_buchungsnr` (`buchungsnr`) USING BTREE,
   ADD KEY `bs_sitzplatznr` (`sitzplatznr`),
-  ADD KEY `bs_tournr` (`tournr`);
+  ADD KEY `bs_tourterminnr` (`tourterminnr`);
 
 --
 -- Indizes für die Tabelle `kunde`
@@ -241,9 +253,16 @@ ALTER TABLE `sitzplatz`
 --
 ALTER TABLE `tour`
   ADD PRIMARY KEY (`tournr`),
-  ADD KEY `t_personalnr` (`personalnr`) USING BTREE,
-  ADD KEY `t_raketennr` (`raketennr`) USING BTREE,
   ADD KEY `t_preisklassennr` (`preisklassennr`) USING BTREE;
+
+--
+-- Indizes für die Tabelle `tourtermin`
+--
+ALTER TABLE `tourtermin`
+  ADD PRIMARY KEY (`tourterminnr`),
+  ADD KEY `tt_tournr` (`tournr`) USING BTREE,
+  ADD KEY `tt_personalnr` (`personalnr`) USING BTREE,
+  ADD KEY `tt_raketennr` (`raketennr`) USING BTREE;
 
 --
 -- AUTO_INCREMENT für exportierte Tabellen
@@ -283,7 +302,7 @@ ALTER TABLE `preisklasse`
 -- AUTO_INCREMENT für Tabelle `rakete`
 --
 ALTER TABLE `rakete`
-  MODIFY `raketennr` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `raketennr` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT für Tabelle `sitzplatz`
@@ -296,6 +315,12 @@ ALTER TABLE `sitzplatz`
 --
 ALTER TABLE `tour`
   MODIFY `tournr` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT für Tabelle `tourtermin`
+--
+ALTER TABLE `tourtermin`
+  MODIFY `tourterminnr` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints der exportierten Tabellen
@@ -313,7 +338,7 @@ ALTER TABLE `buchung`
 ALTER TABLE `buchungsitzplatz`
   ADD CONSTRAINT `bs_buchungsnr` FOREIGN KEY (`buchungsnr`) REFERENCES `buchung` (`buchungsnr`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `bs_sitzplatznr` FOREIGN KEY (`sitzplatznr`) REFERENCES `sitzplatz` (`sitzplatznr`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `bs_tournr` FOREIGN KEY (`tournr`) REFERENCES `tour` (`tournr`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `bs_tourterminnr` FOREIGN KEY (`tourterminnr`) REFERENCES `tourtermin` (`tourterminnr`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints der Tabelle `sitzplatz`
@@ -325,8 +350,15 @@ ALTER TABLE `sitzplatz`
 -- Constraints der Tabelle `tour`
 --
 ALTER TABLE `tour`
+  ADD CONSTRAINT `preisklassennr` FOREIGN KEY (`preisklassennr`) REFERENCES `preisklasse` (`preisklassennr`) ON DELETE CASCADE ON UPDATE CASCADE;
+COMMIT;
+
+--
+-- Constraints der Tabelle `tourtermin`
+--
+ALTER TABLE `tourtermin`
+  ADD CONSTRAINT `tournr` FOREIGN KEY (`tournr`) REFERENCES `tour` (`tournr`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `personalnr` FOREIGN KEY (`personalnr`) REFERENCES `personal` (`personalnr`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `preisklassennr` FOREIGN KEY (`preisklassennr`) REFERENCES `preisklasse` (`preisklassennr`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `raketennr` FOREIGN KEY (`raketennr`) REFERENCES `rakete` (`raketennr`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
