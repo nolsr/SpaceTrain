@@ -19,6 +19,7 @@ export const environment = {
     rockets: {
       getAll: '/rockets',
       getById: '/rockets',
+      getSeats: '/rockets/seats'
     },
     tours: {
       getAll: '/tours',

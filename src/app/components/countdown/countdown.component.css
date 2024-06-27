@@ -1,46 +1,43 @@
 .countdown-container {
-    padding: 20px; /* Padding für den Container */
+    padding: 20px;
     text-align: center;
     color: white;
   }
   
   .countdown-timer {
-    font-size: 2em; /* Passe die Schriftgröße nach Bedarf an */
+    font-size: 2em;
   }
   
-  /* Responsive Schriftgröße für die Überschrift */
   .countdown-container h2 {
-    font-size: 2.5em; /* Schriftgröße der Überschrift */
-    margin-bottom: 40px; /* Abstand zwischen Überschrift und Countdown */
+    font-size: 2.5em;
+    margin-bottom: 40px;
   }
   
-  /* Medienabfrage für kleinere Bildschirme */
   @media (max-width: 768px) {
     .countdown-container {
-      padding: 10px; /* Reduziertes Padding für kleinere Bildschirme */
+      padding: 10px;
     }
   
     .countdown-timer {
-      font-size: 1.5em; /* Kleinere Schriftgröße für kleinere Bildschirme */
+      font-size: 1.5em;
     }
   
     .countdown-container h2 {
-      font-size: 2em; /* Kleinere Schriftgröße für die Überschrift auf kleineren Bildschirmen */
+      font-size: 2em;
     }
   }
   
-  /* Medienabfrage für sehr kleine Bildschirme */
   @media (max-width: 480px) {
     .countdown-container {
-      padding: 5px; /* Weiter reduziertes Padding für sehr kleine Bildschirme */
+      padding: 5px;
     }
   
     .countdown-timer {
-      font-size: 1.2em; /* Noch kleinere Schriftgröße für sehr kleine Bildschirme */
+      font-size: 1.2em;
     }
   
     .countdown-container h2 {
-      font-size: 1.5em; /* Noch kleinere Schriftgröße für die Überschrift auf sehr kleinen Bildschirmen */
+      font-size: 1.5em;
     }
   }
   

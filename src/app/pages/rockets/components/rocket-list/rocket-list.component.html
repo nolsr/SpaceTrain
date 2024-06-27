@@ -1,7 +1,6 @@
 <div class="container">
-  <video class="video1" src="../../../../assets/Raketen/1601356_Backgrounds_Animal_Science_1920x1080.mp4" autoplay
-    loop></video>
-  <h1>Raketen</h1>
+  <app-headline title="Raketen" [videoPath]="'Raketen/1601356_Backgrounds_Animal_Science_1920x1080.mp4'"></app-headline>
+
   <div class="row" *ngFor="let rakete of rocketService.rockets; let i = index">
     <div [ngClass]="{'left': isLeft(i), 'right': !isLeft(i)}">
       <div class="item-content">

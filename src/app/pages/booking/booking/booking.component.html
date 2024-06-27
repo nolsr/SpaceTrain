@@ -1,11 +1,11 @@
-<video class="video1" src="../../../../assets/Buchung/1237171_Abstract_Liquid_Backgrounds_1920x1080.mp4" autoplay loop></video>
-
-<h1>Buchung</h1>
+<app-headline title="Tickets" [videoPath]="'Buchung/1237171_Abstract_Liquid_Backgrounds_1920x1080.mp4'"></app-headline>
 
 <h4>Tour</h4>
 <app-tour-selector [tours]="toursService.tours" [selectedTour]="tour" (selectedTourChanged)="selectedTourChanged($event)"></app-tour-selector>
 
 <h4>Datum</h4>
-<app-calendar [tourdates]="toursService.tourdates"></app-calendar>
+<app-calendar [tourdates]="toursService.tourdates" (selectedTourterminChanged)="selectedTourterminChanged($event)"></app-calendar>
 
 <h4>Sitzplatz</h4>
+<h5 *ngIf="slectedTourtermin?.rocket">Rakete: {{slectedTourtermin?.rocket?.name}}</h5>
+<app-seats [seats]="slectedTourtermin?.rocket?.sitzplaetze ?? []"></app-seats>

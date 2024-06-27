@@ -12,7 +12,7 @@
         <div class="date" *ngFor="let day of days"
             [ngClass]="{
                 'inactive': !day.thisMonth,
-                'has-tour': {day: day.day, month: month + 1, year, tourdates} | tourdate,
+                'has-tour': {isoString: day.isoString, tourdates} | tourdate,
                 'selected': selectedDate == day.isoString
                 }"
             (click)="selectDate(day)">{{ day.day }}</div>

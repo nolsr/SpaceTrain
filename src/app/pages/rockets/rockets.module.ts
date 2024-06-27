@@ -4,6 +4,7 @@ import {RocketListComponent} from "./components/rocket-list/rocket-list.componen
 import {RocketsService} from "../../core/services/rockets.service";
 import {RocketsRoutingModule} from "./rockets-routing.module";
 import { RocketInfoPipe } from "../../pipes/rocket-info.pipe";
+import { ComponentsModule } from '../../components/components.module';
 
 
 
@@ -12,6 +13,7 @@ import { RocketInfoPipe } from "../../pipes/rocket-info.pipe";
     providers: [RocketsService],
     imports: [
         CommonModule,
+        ComponentsModule,
         RocketsRoutingModule,
         RocketInfoPipe
     ]

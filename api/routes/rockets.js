@@ -13,4 +13,15 @@ router.get('/', async (req, res) => {
     }
 });
 
+router.get('/seats/', async (req, res) => {
+    try {
+        db.query('SELECT * FROM sitzplatz', (error, result) => {
+            if (error) throw error;
+            res.status(200).json(result);
+        });
+    } catch (err) {
+        res.status(500).json({message: JSON.stringify(err)})
+    }
+});
+
 module.exports = router;

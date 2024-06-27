@@ -5,9 +5,12 @@
 .month {
     width: 100%;
     text-align: center;
-    color: #1c4da8;
+    color: #27eefe;
     text-transform: uppercase;
     margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .dates {
@@ -29,8 +32,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 2rem;
-    width: 2rem;
+    height: 3rem;
+    width: 3rem;
 }
 
 .date {
@@ -42,8 +45,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 2rem;
-    width: 2rem;
+    height: 3rem;
+    width: 3rem;
     padding-top: 3px;
     filter: brightness(25%);
 }
@@ -53,18 +56,26 @@
 }
 
 .selected { 
-    background-color: #1c4da8 !important;
-    color: white !important;
+    background-color: #27eefe !important;
+    color: black !important;
 }
 
 .nav {
     color: white;
     margin: 0 1rem;
     user-select: none;
+    height: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 2rem;
 }
 
 .nav:hover {
     cursor: pointer;
+    background-color: #27eefe;
+    color: black;
+    border-radius: 3rem;
 }
 
 .has-tour {

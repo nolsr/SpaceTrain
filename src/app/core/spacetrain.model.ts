@@ -3,8 +3,7 @@ export class User {
     public kundennr: number,
     public name: string,
     public email: string,
-    public password: string,
-    public buchungen: Buchung[],
+    public password: string
   ) {
   }
 }
@@ -12,9 +11,32 @@ export class User {
 export class Buchung {
   constructor(
     public buchungsnr: number,
-    public tour: Tour,
+    public tourtermin: Tourtermin,
     public preis: number,
     public besitzer: User,
+  ) {
+  }
+}
+
+export class Ticket {
+  constructor(
+    public ticketnr: number,
+    public buchungsnr: number,
+    public sitzplatznr: number,
+    public tourterminnr: number
+  ) {
+  }
+}
+
+export class Sitzplatz {
+  public selected: boolean = false;
+
+  constructor(
+    public sitzplatznr: number,
+    public raketennr: number,
+    public preis: number,
+    public bezeichnung: string,
+    public belegt: boolean
   ) {
   }
 }
@@ -48,6 +70,7 @@ export class Tourtermin {
 }
 
 export class Rocket {
+  public sitzplaetze: Array<Sitzplatz> = [];
   constructor(
     public raketennr: number,
     public name: string,
@@ -56,8 +79,12 @@ export class Rocket {
     public schiffvolumen: string,
     public traegervolumen: string,
     public startnutzlastmasse: string,
-    public rueckkehrnutzlastmasse: string,
+    public rueckkehrnutzlastmasse: string
   ) {
+  }
+
+  public setSeats(sitzplaetze: Array<Sitzplatz>): void {
+    this.sitzplaetze = sitzplaetze.filter(s => s.raketennr == this.raketennr);
   }
 }
 

@@ -6,13 +6,6 @@
     flex-direction: column;
 }
 
-video {
-    display:block;
-    margin-right: auto;
-    margin-left: auto;
-    width: 75%;
-}
-
 input {
     width: 20rem;
     border: 1px solid rgb(194, 194, 194);

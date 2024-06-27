@@ -6,8 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./countdown.component.css']
 })
 export class CountdownComponent {
-  endDate = new Date('2024-12-31T00:00:00'); // Setze hier das Enddatum des Countdowns
-  remainingTime: string = ''; // Initialisiere die Eigenschaft
+  endDate = new Date('2024-12-31T00:00:00');
+  remainingTime: string = '';
   intervalId: any;
 
   ngOnInit() {

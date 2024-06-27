@@ -1,16 +1,3 @@
-.video1{
-  display:block;
-  margin-right: auto;
-  margin-left: auto;
-  width: 75%;
-}
-
-h1 {
-  display: flex;
-  justify-content: center;
-  font-size: 52pt;
-}
-
 h2 {
   font-size: 25pt;
 }
@@ -45,37 +32,6 @@ h2 {
 
 .item-content .attribute {
   margin-bottom: 30px;
-}
-
-.conti {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-
-.obar {
-  position: absolute;
-  top: 345px;
-  left: -5px;
-  width: 1060px;
-  height: 1060px;
-}
-
-.obunten {
-  position: absolute;
-  top: 735px;
-  left: 28px;
-  width: 1060px;
-  height: 1060px;
-}
-
-.obunten2 {
-  position: absolute;
-  top: 3045px;
-  left: -5px;
-  width: 1060px;
-  height: 1060px;
 }
 
 .kreis1 {

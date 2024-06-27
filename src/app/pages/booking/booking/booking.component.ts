@@ -1,9 +1,9 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, NgZone, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ToursService } from '../../../core/services/tours.service';
 import { StaffService } from '../../../core/services/staff.service';
 import { RocketsService } from '../../../core/services/rockets.service';
-import { Crewmember, Rocket } from '../../../core/spacetrain.model';
+import { Crewmember, Rocket, Tourtermin } from '../../../core/spacetrain.model';
 
 @Component({
   selector: 'app-booking',
@@ -12,12 +12,15 @@ import { Crewmember, Rocket } from '../../../core/spacetrain.model';
 })
 export class BookingComponent implements OnInit, OnDestroy {
   public tour = 1;
+  public slectedTourtermin: Tourtermin = {} as Tourtermin;
   private sub: any;
+
   constructor(
     private route: ActivatedRoute,
     public toursService: ToursService,
     private staffService: StaffService,
-    private rocketsService: RocketsService
+    private rocketsService: RocketsService,
+    private ngZone: NgZone
   ) { }
 
   ngOnInit(): void {
@@ -41,6 +44,7 @@ export class BookingComponent implements OnInit, OnDestroy {
             this.toursService.getToursdatesByTourId(this.tour, rockets, staff).subscribe({
               next: () => {
                 console.log(this.toursService.tourdates);
+                this.selectedTourterminChanged();
               }
             });
           }
@@ -52,5 +56,13 @@ export class BookingComponent implements OnInit, OnDestroy {
   public selectedTourChanged(tourNr: number): void {
     this.tour = tourNr;
     this.refreshTourdates();
+  }
+
+  public selectedTourterminChanged(tourtermin: Tourtermin | undefined = undefined): void {
+    if (tourtermin === undefined) {
+      tourtermin = {} as Tourtermin;
+    }
+    console.log(tourtermin);
+    this.slectedTourtermin = tourtermin;
   }
 }
