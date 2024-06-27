@@ -1,0 +1,68 @@
+:host {
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+video {
+    display:block;
+    margin-right: auto;
+    margin-left: auto;
+    width: 75%;
+}
+
+input {
+    width: 20rem;
+    border: 1px solid rgb(194, 194, 194);
+    border-radius: 4px;
+    padding: 0.5rem;
+    font-size: 1.5rem;
+}
+
+label {
+    color: rgb(194, 194, 194);
+    margin-bottom: 0.5rem;
+}
+
+.invalid {
+    color: rgb(226, 67, 67);
+    border-color: rgb(226, 67, 67);
+}
+.invalid:focus {
+    outline: none !important;
+    border-color: rgb(226, 67, 67) !important;
+}
+
+input:focus {
+    outline: none;
+}
+.input-wrapper {
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+button.login {
+    width: 20rem;
+    height: 3rem;
+    background-color: #0071e3;
+    border: 1px solid #0071e3;
+    border-radius: 4px;
+    font-size: 1.5rem;
+    color: white;
+    cursor: pointer;
+}
+
+button.login:not(:disabled):active {
+    margin-top: 2px;
+    margin-bottom: -2px;
+    filter: brightness(0.7);
+}
+
+
+button.login:disabled {
+    background-color: rgb(194, 194, 194);
+    border: 1px solid rgb(194, 194, 194);
+}

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -7,6 +8,9 @@ import { Component } from '@angular/core';
   styleUrl: './mission.component.css'
 })
 export class MissionComponent {
-
+  constructor(private router: Router) {}
+  public gotoTickets() {
+    this.router.navigate(['/booking']);
+  }
 }
 

@@ -9,13 +9,19 @@ const routes: Routes = [
     ),
   },
   {
+    path: 'login',
+    loadChildren: () => import('./pages/login/login.module').then(
+      (m) => m.LoginModule
+    ),
+  },
+  {
     path: 'rockets',
     loadChildren: () => import('./pages/rockets/rockets.module').then(
         (m) => m.RocketsModule
       ),
   },
   {
-    path: 'booking',
+    path: 'booking/:tour',
     loadChildren: () =>
       import('./pages/booking/booking.module').then(
         (m) => m.BookingModule
@@ -33,7 +39,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' })],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

@@ -1,0 +1,22 @@
+:host {
+    border: 2px solid white;
+    border-radius: 1rem;
+    display: flex;
+    overflow: hidden;
+}
+
+.tour {
+    padding: 0.5rem 1rem;
+    transition: all 0.3s ease;
+}
+
+.tour:hover, .active {
+    color: black;
+    background-color: white;
+    cursor: pointer;
+}
+
+.tour:not(:last-of-type) {
+    border: 2px solid white;
+    border-width: 0 2px 0 0;
+}

@@ -45,22 +45,16 @@
     height: 2rem;
     width: 2rem;
     padding-top: 3px;
-}
-
-.date:hover {
-    cursor: pointer;
-    border: 2px solid white;
-    border-radius: 2rem;
-}
-
-.inactive {
     filter: brightness(25%);
 }
 
+.inactive {
+    filter: brightness(0%);
+}
+
 .selected { 
-    background-color: #1c4da8;
-    border-radius: 2rem;
-    border: 2px solid white;
+    background-color: #1c4da8 !important;
+    color: white !important;
 }
 
 .nav {
@@ -71,4 +65,16 @@
 
 .nav:hover {
     cursor: pointer;
+}
+
+.has-tour {
+    /* background-color: white;
+    color: black; */
+    border-radius: 2rem;
+    filter: brightness(100%);
+}
+
+.has-tour:hover {
+    cursor: pointer;
+    border: 2px solid white;
 }

@@ -6,5 +6,7 @@
         <a routerLink="/mission" routerLinkActive="active">Mission</a>
         <a routerLink="/tours" routerLinkActive="active">Touren</a>
         <a routerLink="/rockets" routerLinkActive="active">Raketen</a>
+        <a *ngIf="authService.loggedInUser === null" routerLink="/login" routerLinkActive="active">Login</a>
+        <a *ngIf="authService.loggedInUser !== null" routerLink="/" routerLinkActive="active">Profile</a>
     </div>
 </div>
