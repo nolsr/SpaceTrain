@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ToursService } from '../../../core/services/tours.service';
 import { StaffService } from '../../../core/services/staff.service';
 import { RocketsService } from '../../../core/services/rockets.service';
-import { Crewmember, Rocket, Tourtermin } from '../../../core/spacetrain.model';
+import { Crewmember, Rocket, Sitzplatz, Tour, Tourtermin } from '../../../core/spacetrain.model';
 
 @Component({
   selector: 'app-booking',
@@ -13,6 +13,7 @@ import { Crewmember, Rocket, Tourtermin } from '../../../core/spacetrain.model';
 export class BookingComponent implements OnInit, OnDestroy {
   public tour = 1;
   public slectedTourtermin: Tourtermin = {} as Tourtermin;
+  public totalCost = '';
   private sub: any;
 
   constructor(
@@ -39,12 +40,16 @@ export class BookingComponent implements OnInit, OnDestroy {
   private refreshTourdates(): void {
     this.staffService.getStaff().subscribe({
       next: (staff: Array<Crewmember>) => {
-        this.rocketsService.getRockets().subscribe({
-          next: (rockets: Array<Rocket>) => {
-            this.toursService.getToursdatesByTourId(this.tour, rockets, staff).subscribe({
-              next: () => {
-                console.log(this.toursService.tourdates);
-                this.selectedTourterminChanged();
+        this.toursService.getTours().subscribe({
+          next: (tours: Array<Tour>) => {
+            this.rocketsService.getRockets().subscribe({
+              next: (rockets: Array<Rocket>) => {
+                this.toursService.getToursdatesByTourId(this.tour, rockets, staff, tours).subscribe({
+                  next: () => {
+                    console.log(this.toursService.tourdates);
+                    this.selectedTourterminChanged();
+                  }
+                });
               }
             });
           }
@@ -62,7 +67,15 @@ export class BookingComponent implements OnInit, OnDestroy {
     if (tourtermin === undefined) {
       tourtermin = {} as Tourtermin;
     }
-    console.log(tourtermin);
     this.slectedTourtermin = tourtermin;
+    this.calcTotalPrice();
+  }
+
+  public selectedSeatChanged(): void {
+    this.calcTotalPrice();
+  }
+
+  private calcTotalPrice() {
+    console.log(this.slectedTourtermin);
   }
 }

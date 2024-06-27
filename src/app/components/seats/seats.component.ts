@@ -12,5 +12,6 @@ export class SeatsComponent {
 
   public onSelectSeat(seat: Sitzplatz): void {
     this.seats[this.seats.findIndex(s => s.sitzplatznr === seat.sitzplatznr)].selected = !seat.selected;
+    this.selectedSeatCahnged.emit(seat);
   }
 }

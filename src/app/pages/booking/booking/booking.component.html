@@ -8,4 +8,7 @@
 
 <h4>Sitzplatz</h4>
 <h5 *ngIf="slectedTourtermin?.rocket">Rakete: {{slectedTourtermin?.rocket?.name}}</h5>
-<app-seats [seats]="slectedTourtermin?.rocket?.sitzplaetze ?? []"></app-seats>
+<app-seats [seats]="slectedTourtermin?.rocket?.sitzplaetze ?? []" (selectedSeatCahnged)="selectedSeatChanged()"></app-seats>
+
+<h4>Gesamtpreis</h4>
+{{ totalCost }}

@@ -20,6 +20,7 @@ export class RocketsService {
     return new Observable(observer => {
       this.getSeats().subscribe({
         next: (sitzplaetze: Array<Sitzplatz>) => {
+          sitzplaetze = sitzplaetze.map(s => new Sitzplatz(s.sitzplatznr, s.raketennr, s.preis, s.bezeichnung, s.belegt ?? false));
           this.apiService.get<Rocket[]>(`${this.rocketEndpoints.getAll}`).subscribe({
             next: (res: Array<Rocket>) => {
               this.ngZone.run(() => {

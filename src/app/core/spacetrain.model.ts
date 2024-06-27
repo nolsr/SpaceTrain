@@ -29,7 +29,7 @@ export class Ticket {
 }
 
 export class Sitzplatz {
-  public selected: boolean = false;
+  public selected: boolean;
 
   constructor(
     public sitzplatznr: number,
@@ -38,6 +38,7 @@ export class Sitzplatz {
     public bezeichnung: string,
     public belegt: boolean
   ) {
+    this.selected = false;
   }
 }
 
@@ -55,17 +56,21 @@ export class Tour {
 export class Tourtermin {
   public rocket: Rocket;
   public crewmember: Crewmember;
+  public tour: Tour;
   constructor(
     public tourterminnr: number,
     public datum: string,
     public personalnr: number,
     public raketennr: number,
+    public tournr: number,
     rockets: Rocket[],
-    staff: Crewmember[]
+    staff: Crewmember[],
+    tours: Tour[]
   ) {
     this.datum = this.datum.substring(0, 10);
     this.rocket = rockets.find(r => r.raketennr == raketennr) || new Rocket(raketennr, '', '', '', '', '', '', '');
     this.crewmember = staff.find(s => s.personalnr == personalnr) || new Crewmember(personalnr, '');
+    this.tour = tours.find(t => t.tournr == tournr) || new Tour(tournr, '', '', 0, '');
   }
 }
 

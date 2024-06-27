@@ -14,14 +14,24 @@ export class ToursService {
 
   constructor(private apiService: ApiService, private ngZone: NgZone) { }
 
-  public getTours(): void {
-    this.apiService.get<Tour[]>(`${this.toursEndpoints.getAll}`).subscribe({
-      next: (res: Array<Tour>) => {
-        this.ngZone.run(() => {
-          this.tours = res;
-        });
-      },
-      error: err => console.error(err)
+  public getTours(): Observable<Tour[]> {
+    return new Observable(observer => {
+      this.apiService.get<Tour[]>(`${this.toursEndpoints.getAll}`).subscribe({
+        next: (res: Array<Tour>) => {
+          this.ngZone.run(() => {
+            const tours: Array<Tour> = [];
+            res.forEach((t: Tour) => {
+              tours.push(new Tour(t.tournr, t.name, t.ort, t.preisklasse, t.beschreibung));
+            })
+            this.tours = tours;
+            observer.next(this.tours);
+          });
+        },
+        error: err => {
+          console.error(err);
+          observer.error(err);
+        }
+      });
     });
   }
 
@@ -29,14 +39,14 @@ export class ToursService {
     return this.apiService.get<any>(`${this.toursEndpoints.getCountdown}`);
   }
 
-  public getToursdatesByTourId(id: number, rockets: Rocket[], staff: Crewmember[]): Observable<any> {
+  public getToursdatesByTourId(id: number, rockets: Rocket[], staff: Crewmember[], tours: Tour[]): Observable<any> {
     return new Observable(observer => {
       this.apiService.get<Tourtermin[]>(`${this.toursEndpoints.getTourdatesByTournr}/${id}`).subscribe({
         next: (res: Array<Tourtermin>) => {
           this.ngZone.run(() => {
             const tourdates: Tourtermin[] = [];
             res.forEach(tour => {
-              tourdates.push(new Tourtermin(tour.tourterminnr, tour.datum, tour.personalnr, tour.raketennr, rockets, staff));
+              tourdates.push(new Tourtermin(tour.tourterminnr, tour.datum, tour.personalnr, tour.raketennr, tour.tournr, rockets, staff, tours));
             });
             this.tourdates = tourdates;
             observer.next(this.tourdates);
