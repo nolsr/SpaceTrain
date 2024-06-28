@@ -7,8 +7,13 @@
 <app-calendar [tourdates]="toursService.tourdates" (selectedTourterminChanged)="selectedTourterminChanged($event)"></app-calendar>
 
 <h4>Sitzplatz</h4>
-<h5 *ngIf="slectedTourtermin?.rocket">Rakete: {{slectedTourtermin?.rocket?.name}}</h5>
-<app-seats [seats]="slectedTourtermin?.rocket?.sitzplaetze ?? []" (selectedSeatCahnged)="selectedSeatChanged()"></app-seats>
+<h5 *ngIf="selectedTourtermin?.rocket">Rakete: {{selectedTourtermin?.rocket?.name}}</h5>
+<app-seats [seats]="selectedTourtermin?.rocket?.sitzplaetze ?? []" (selectedSeatCahnged)="selectedSeatChanged()"></app-seats>
 
 <h4>Gesamtpreis</h4>
-{{ totalCost }}
+<span class="cost">{{ totalCost }}</span>
+
+<button (click)="bookTickets()">Jetzt buchen</button>
+
+<img id="circle1" class="circle" src="../../../../assets/Kreiselemente/Kreise-04(Nils).svg" alt="Kreisgrafik">
+<img id="circle2" class="circle" src="../../../../assets/Kreiselemente/Kreise-04(Nils).svg" alt="Kreisgrafik">

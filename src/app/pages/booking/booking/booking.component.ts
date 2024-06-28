@@ -12,8 +12,8 @@ import { Crewmember, Rocket, Sitzplatz, Tour, Tourtermin } from '../../../core/s
 })
 export class BookingComponent implements OnInit, OnDestroy {
   public tour = 1;
-  public slectedTourtermin: Tourtermin = {} as Tourtermin;
-  public totalCost = '';
+  public selectedTourtermin: Tourtermin = {} as Tourtermin;
+  public totalCost = '0.00 €';
   private sub: any;
 
   constructor(
@@ -67,7 +67,7 @@ export class BookingComponent implements OnInit, OnDestroy {
     if (tourtermin === undefined) {
       tourtermin = {} as Tourtermin;
     }
-    this.slectedTourtermin = tourtermin;
+    this.selectedTourtermin = tourtermin;
     this.calcTotalPrice();
   }
 
@@ -76,6 +76,19 @@ export class BookingComponent implements OnInit, OnDestroy {
   }
 
   private calcTotalPrice() {
-    console.log(this.slectedTourtermin);
+    console.log(this.selectedTourtermin);
+    if (!this.selectedTourtermin.tour) {
+      return;
+    }
+    const sum = this.selectedTourtermin.rocket.sitzplaetze.map(s => s.selected ? s.preis : 0).reduce((sum, current) => sum + current, 0);
+    this.totalCost = this.addDots((this.selectedTourtermin.tour.preisklasse * sum).toFixed(2)) + ' €';
+  }
+  
+  private addDots(x: string) {
+    return x.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ".");
+  }
+
+  public bookTickets() {
+    // TODO: Tickets buchen implementieren
   }
 }

@@ -4,14 +4,18 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    padding-bottom: 10rem;
+    overflow: hidden;
+    position: relative;
 }
 
 input {
     width: 20rem;
     border: 1px solid rgb(194, 194, 194);
     border-radius: 4px;
-    padding: 0.5rem;
-    font-size: 1.5rem;
+    padding: 0.8rem;
+    font-size: 1rem;
+    margin: 0.75rem 0;
 }
 
 label {
@@ -31,6 +35,11 @@ label {
 input:focus {
     outline: none;
 }
+
+input::placeholder {
+    font-family: new-science;
+}
+
 .input-wrapper {
     margin-bottom: 1rem;
     display: flex;
@@ -40,11 +49,11 @@ input:focus {
 button.login {
     width: 20rem;
     height: 3rem;
-    background-color: #0071e3;
-    border: 1px solid #0071e3;
+    border: 2px solid #27eefe;
     border-radius: 4px;
+    color: #27eefe;
     font-size: 1.5rem;
-    color: white;
+    background-color: transparent;
     cursor: pointer;
 }
 
@@ -54,8 +63,43 @@ button.login:not(:disabled):active {
     filter: brightness(0.7);
 }
 
-
 button.login:disabled {
-    background-color: rgb(194, 194, 194);
-    border: 1px solid rgb(194, 194, 194);
+    filter: grayscale(1);
+}
+
+button.login:not(:disabled):hover {
+    margin-top: -0.5rem;
+    margin-bottom: 0.5rem;
+    cursor: pointer;
+    background-color: #27eefe;
+    color: black;
+}
+
+.secondary {
+    margin: 2rem 0;
+    color: #27eefe;
+    width: 20rem;
+    text-align: center;
+}
+
+.secondary:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.circle {
+    position: absolute;
+    z-index: -1;
+    width: 100rem;
+    height: 100rem;
+}
+
+#circle1 {
+    top: calc(100vh - 20rem);
+    left: 55%;
+}
+
+#circle2 {
+    top: calc(100vh + 10rem);
+    right: 60%;
 }

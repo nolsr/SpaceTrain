@@ -4,8 +4,45 @@
     align-items: center;
     flex-direction: column;
     padding-bottom: 10rem;
+    overflow: hidden;
+    position: relative;
 }
 
 h4 {
-    margin-top: 4rem;
+    margin-top: 6rem;
+}
+
+.cost {
+  margin-bottom: 6rem;
+}
+
+button {
+  padding: 0.5rem 1.5rem;
+  font-size: 1.5rem;
+  transition: all 0.3s ease;
+  background-color: transparent;
+  border: 2px solid #27eefe;
+  color: #27eefe;
+  animation: pulse 2s infinite;
+}
+
+button:hover {
+  margin-top: -0.5rem;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+  background-color: #27eefe;
+  color: black;
+}
+
+
+.circle {
+  position: absolute;
+  z-index: -1;
+  width: 100rem;
+  height: 100rem;
+}
+
+#circle1 {
+  top: 40rem;
+  left: 65%;
 }

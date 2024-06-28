@@ -1,6 +1,6 @@
-<app-headline title="Anmelden" [videoPath]="'Buchung/1237171_Abstract_Liquid_Backgrounds_1920x1080.mp4'"></app-headline>
+<app-headline [title]="isLogin ? 'Anmelden' : 'Registrieren'" [videoPath]="'Buchung/1237171_Abstract_Liquid_Backgrounds_1920x1080.mp4'"></app-headline>
 
-<form [formGroup]="loginForm" (ngSubmit)="login()" class="login-form">
+<form [formGroup]="loginForm" (ngSubmit)="login()" class="login-form" *ngIf="isLogin">
     <div class="input-wrapper">
         <input name="email" type="email" formControlName="email" required
             [ngClass]="{'invalid': loginForm.controls['email'].errors && !loginForm.controls['email'].pristine}"
@@ -11,5 +11,44 @@
             [ngClass]="{'invalid': loginForm.controls['password'].errors && !loginForm.controls['password'].pristine}"
             placeholder="Passwort">
     </div>
-    <button class="login" [disabled]="loginForm.invalid" (click)="login()">Login</button>
+    <button class="login" [disabled]="loginForm.invalid" (click)="login()">Anmelden</button>
+    <div class="secondary" (click)="toggleLogin()">Registrieren</div>
 </form>
+
+<form [formGroup]="registerForm" (ngSubmit)="register()" class="login-form" *ngIf="!isLogin">
+    <div class="input-wrapper">
+        <input name="vorname" type="vorname" formControlName="vorname" required
+            [ngClass]="{'invalid': registerForm.controls['vorname'].errors && !registerForm.controls['vorname'].pristine}"
+            placeholder="Vorname">
+    </div>
+    <div class="input-wrapper">
+        <input name="nachname" type="nachname" formControlName="nachname" required
+            [ngClass]="{'invalid': registerForm.controls['nachname'].errors && !registerForm.controls['nachname'].pristine}"
+            placeholder="Nachname">
+    </div>
+    <div class="input-wrapper">
+        <input name="adresse" type="adresse" formControlName="adresse" required
+            [ngClass]="{'invalid': registerForm.controls['adresse'].errors && !registerForm.controls['adresse'].pristine}"
+            placeholder="Adresse">
+    </div>
+    <div class="input-wrapper">
+        <input name="email" type="email" formControlName="email" required
+            [ngClass]="{'invalid': registerForm.controls['email'].errors && !registerForm.controls['email'].pristine}"
+            placeholder="Email">
+    </div>
+    <div class="input-wrapper">
+        <input name="password" type="password" formControlName="password" required
+            [ngClass]="{'invalid': registerForm.controls['password'].errors && !registerForm.controls['password'].pristine}"
+            placeholder="Passwort">
+    </div>
+    <div class="input-wrapper">
+        <input name="confirmPassword" type="confirmPassword" formControlName="confirmPassword" required
+            [ngClass]="{'invalid': registerForm.controls['confirmPassword'].errors && !registerForm.controls['confirmPassword'].pristine}"
+            placeholder="Passwort wiederholen">
+    </div>
+    <button class="login" [disabled]="registerForm.invalid" (click)="login()">Registrieren</button>
+    <div class="secondary" (click)="toggleLogin()">Anmelden</div>
+</form>
+
+<img id="circle1" class="circle" src="../../../../assets/Kreiselemente/Kreise-04(Nils).svg" alt="Kreisgrafik">
+<img id="circle2" class="circle" src="../../../../assets/Kreiselemente/Kreise-04(Nils).svg" alt="Kreisgrafik">

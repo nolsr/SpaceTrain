@@ -40,5 +40,5 @@ export class RocketInfoPipe implements PipeTransform {
 
   private addDots(x: string) {
     return x.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ".");
-}
+  }
 }

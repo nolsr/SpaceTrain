@@ -11,7 +11,8 @@
     position: absolute;
     width:75%;
     left: 50%;
-    bottom: -80vh;
+    bottom: -95vh;
+    z-index: -1;
 }
 .video1 {
     display: block;
