@@ -1,0 +1,14 @@
+<span *ngIf="seats.length === 0">
+    Vor der Sitzplatzreservierung muss ein Termin ausgewählt werden.
+</span>
+
+<div class="row">
+    <div class="seat" *ngFor="let seat of seats | seat: true" (click)="onSelectSeat(seat)" [ngClass]="{'selected': seat.selected, 'taken': seat.belegt}">
+        {{ seat.bezeichnung }}
+    </div>
+</div>
+<div class="row">
+    <div class="seat" *ngFor="let seat of seats | seat: false" (click)="onSelectSeat(seat)" [ngClass]="{'selected': seat.selected, 'taken': seat.belegt}">
+        {{ seat.bezeichnung }}
+    </div>
+</div>

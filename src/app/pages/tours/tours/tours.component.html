@@ -1,20 +1,17 @@
 <div class="Touren">
-    <video class="video1" src="../../../../assets/Touren/1601317_Backgrounds_Animal_Science_1920x1080.mp4" autoplay loop></video>
-
-    <h1>TOUREN</h1>
-
+    <app-headline title="Touren" [videoPath]="'Touren/1601317_Backgrounds_Animal_Science_1920x1080.mp4'"></app-headline>
 
     <div class="Tourblock">
         <div class="Textblock">
             <div>
-                <h2>Outer Space Discovery</h2>
+                <h2>{{toursService.tours[2]?.name}}</h2>
             </div>
             <div>
-                <p>Tauchen Sie ein in die unendlichen Weiten des Weltraums mit unserer Outer Space Discovery Tour. Erleben Sie die Schwerelosigkeit und bewundern Sie atemberaubende Ausblicke auf ferne Galaxien und strahlende Sterne. Diese Tour bietet Ihnen die Möglichkeit, faszinierende wissenschaftliche Experimente durchzuführen und an historischen Weltraummissionen teilzunehmen. Unsere erfahrenen Guides stehen Ihnen jederzeit zur Seite, um diese unvergessliche Reise zu einem unvergesslichen Erlebnis zu machen.</p>
+                <p>{{toursService.tours[2]?.beschreibung}}</p>
             </div>
         </div>
         <div class="Buttonblock">
-            <button class="secondary" (click)="gotoTickets('1')">Tickets</button>
+            <button class="secondary" (click)="gotoTickets(3)">Tickets</button>
         </div>
     </div>
 
@@ -23,14 +20,14 @@
     <div class="Tourblock2">
         <div class="Textblock">
             <div>
-                <h3>Lunar Surface Exploration</h3>
+                <h3>{{toursService.tours[1]?.name}}</h3>
             </div>
             <div>
-                <p>Betreten Sie die legendäre Mondoberfläche und folgen Sie den Spuren der Astronauten mit unserer Lunar Surface Exploration Tour. Schreiten Sie über den staubigen Boden des Mondes und erleben Sie die unvergleichliche Stille des Weltraums. Erforschen Sie Krater, entdecken Sie alte Mondlandefahrzeuge und sammeln Sie einzigartige Gesteinsproben. Diese Tour bietet Ihnen die Möglichkeit, sich wie ein echter Weltraumforscher zu fühlen und die Geheimnisse unseres natürlichen Satelliten zu entdecken.</p>
+                <p>{{toursService.tours[1]?.beschreibung}}</p>
             </div>
         </div>
         <div class="Buttonblock" style="justify-content: right">
-            <button class="secondary" (click)="gotoTickets('2')">Tickets</button>
+            <button class="secondary" (click)="gotoTickets(2)">Tickets</button>
         </div>
     </div>
 
@@ -39,14 +36,17 @@
     <div class="Tourblock" style="padding-top: 5%">
         <div class="Textblock">
             <div>
-                <h3>Earth Orbit Tour</h3>
+                <h3>{{toursService.tours[0]?.name}}</h3>
             </div>
             <div>
-                <p>Erleben Sie die Schwerelosigkeit und die atemberaubende Aussicht auf unseren Heimatplaneten mit unserer Earth Orbit Tour. Schweben Sie durch die Weiten des Weltraums und bewundern Sie die majestätische Schönheit der Erde aus der Ferne. Beobachten Sie Kontinente und Ozeane aus der Vogelperspektive und lassen Sie sich von der Zerbrechlichkeit unseres Planeten beeindrucken. Diese Tour bietet Ihnen die Möglichkeit, den Blick der Astronauten zu teilen und die Welt mit neuen Augen zu sehen.</p>
+                <p>{{toursService.tours[0]?.beschreibung}}</p>
             </div>
         </div>
         <div class="Buttonblock">
-            <button class="secondary" (click)="gotoTickets('3')">Tickets</button>
+            <button class="secondary" (click)="gotoTickets(1)">Tickets</button>
         </div>
+    </div>
+    <div class="Kreiscontainer">
+        <img class="Kreis" src="../../../../assets/Kreiselemente/Kreise-03(Tammo).svg" alt="Kreisgrafik">
     </div>
 </div>

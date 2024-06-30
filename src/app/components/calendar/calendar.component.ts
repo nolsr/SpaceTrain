@@ -1,14 +1,17 @@
-import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { Tourtermin } from '../../core/spacetrain.model';
 
 @Component({
   selector: 'app-calendar',
   templateUrl: './calendar.component.html',
   styleUrl: './calendar.component.css'
 })
-export class CalendarComponent implements OnInit {
-  private month = 0;
-  private year = 0;
+export class CalendarComponent implements OnInit, OnChanges {
+  @Input() tourdates: Array<Tourtermin> = [];
+  @Output() selectedTourterminChanged: EventEmitter<Tourtermin> = new EventEmitter<Tourtermin>();
+
+  public month = 0;
+  public year = 0;
   private months = ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember']
   public weekdays = ['S', 'M', 'D', 'M', 'D', 'F', 'S']
 
@@ -16,10 +19,18 @@ export class CalendarComponent implements OnInit {
   public days: Array<CalendarDay> = [];
   public selectedDate = '';
 
+  constructor() {}
+
   ngOnInit(): void {
     this.month = new Date().getMonth();
     this.year = new Date().getFullYear();
     this.fillCalendar();
+  }
+
+  ngOnChanges(sc: SimpleChanges): void {
+    if (sc['tourdates']) {
+      this.selectedDate = ''
+    }
   }
 
   private fillCalendar() {
@@ -46,7 +57,11 @@ export class CalendarComponent implements OnInit {
     if (!calendarDay.thisMonth) {
       return;
     }
-    this.selectedDate = calendarDay.isoString;
+    const tourOnThatDate = this.tourdates.find(tour => tour.datum === calendarDay.isoString);
+    if (tourOnThatDate) {
+      this.selectedDate = calendarDay.isoString;
+      this.selectedTourterminChanged.emit(tourOnThatDate);
+    }
   }
 
   public nextMonth() {

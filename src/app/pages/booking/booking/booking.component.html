@@ -1,3 +1,34 @@
-<h1>Buchung</h1>
-<h3>Tour Buchen</h3>
-<app-calendar></app-calendar>
+<app-headline title="Tickets" [videoPath]="'Buchung/1237171_Abstract_Liquid_Backgrounds_1920x1080.mp4'"></app-headline>
+
+<h4>Tour</h4>
+<app-tour-selector [tours]="toursService.tours" [selectedTour]="tour" (selectedTourChanged)="selectedTourChanged($event)"></app-tour-selector>
+
+<h4>Datum</h4>
+<app-calendar [tourdates]="toursService.tourdates" (selectedTourterminChanged)="selectedTourterminChanged($event)"></app-calendar>
+
+<h4>Sitzplatz</h4>
+<h5 *ngIf="selectedTourtermin?.rocket">Rakete: {{selectedTourtermin?.rocket?.name}}</h5>
+<app-seats [seats]="selectedTourtermin?.rocket?.sitzplaetze ?? []" (selectedSeatCahnged)="selectedSeatChanged()"></app-seats>
+
+<h4>Gesamtpreis</h4>
+<span>{{ totalCost }}</span>
+
+<h4>Zahlungsoptionen</h4>
+<div class="payment-wrapper">
+    <div class="payment" [ngClass]="{'selectedPayment': selectedPayment == 'paypal' }" (click)="selectedPayment = 'paypal'">
+        <img src="assets/Bezahlung/paypal.png" alt="PayPal">
+        <div class="title">PayPal</div>
+    </div>
+    <div class="payment" [ngClass]="{'selectedPayment': selectedPayment == 'visa' }" (click)="selectedPayment = 'visa'">
+        <img src="assets/Bezahlung/visa.png" alt="PayPal">
+        <div class="title">Visa</div>
+    </div>
+</div>
+
+<button (click)="bookTickets()" [disabled]="totalCost == '0.00 €'">Jetzt buchen</button>
+
+<img id="circle1" class="circle" src="../../../../assets/Kreiselemente/Kreise-04(Nils).svg" alt="Kreisgrafik">
+<img id="circle2" class="circle" src="../../../../assets/Kreiselemente/Kreise-04(Nils).svg" alt="Kreisgrafik">
+
+<app-popup *ngIf="showLoginError" [title]="'Fehler'" [text]="'Sie müssen angemeldet sein um Tickets zu buchen!'" (close)="showLoginError = false"></app-popup>
+<app-popup *ngIf="showSuccess" [title]="'Erfolg'" [text]="'Vielen Dank für Ihre Bestellung. Sie können Ihre Tickets unter \'Profil\' abrufen.'" (close)="onCloseBookingReceipt()"></app-popup>

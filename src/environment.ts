@@ -16,9 +16,22 @@ export const environment = {
       getAll: '/touren',
       getById: '/touren',
     },
+    booking: {
+      getById: '/booking',
+      book: '/booking'
+    },
     rockets: {
-      getAll: '/rocket',
-      getById: '/rocket',
+      getAll: '/rockets',
+      getById: '/rockets',
+      getSeats: '/rockets/seats'
+    },
+    tours: {
+      getAll: '/tours',
+      getTourdatesByTournr: '/tours/dates',
+      getCountdown: '/tours/next'
+    },
+    staff: {
+      getAll: '/staff'
     }
   },
 };

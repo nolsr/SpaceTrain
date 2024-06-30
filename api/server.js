@@ -11,6 +11,10 @@ const allowCrossDomain = (req, res, next) => {
 };
 
 const rocketsRoutes = require("./routes/rockets.js");
+const toursRoutes = require("./routes/tours.js");
+const staffRoutes = require("./routes/staff.js");
+const userRoutes = require("./routes/user.js");
+const bookingRoutes = require("./routes/booking.js");
 
 bodyParser = require('body-parser');
 
@@ -28,18 +32,16 @@ app.use(express.static(path.join(__dirname, '/dist/spacetrain')));
 
 // ROUTEN //
 app.use('/rockets', rocketsRoutes);
-app.get('/test', (req, res) => {
-      res.json({message: 'ok'});
-});
-
-
+app.use('/tours', toursRoutes);
+app.use('/staff', staffRoutes);
+app.use('/user', userRoutes);
+app.use('/booking', bookingRoutes)
 
 // Error Middleware
 app.use((err, req, res, next) => {
-      const statusCode = err.statusCode || 500;
+      const statusCode = err.status || 500;
       console.error(err.message, err.stack);
       res.status(statusCode).json({ message: err.message });
-      return;
 });
 
 app.listen(portNumber, function () {

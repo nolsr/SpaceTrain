@@ -1,51 +1,119 @@
 export class User {
   constructor(
-    public id: number,
+    public kundennr: number,
     public name: string,
+    public vorname: string,
+    public adresse: string,
     public email: string,
-    public password: string,
-    public buchungen: Buchung[],
+    public password: string
   ) {
   }
 }
 
 export class Buchung {
   constructor(
-    public id: number,
-    public tour: Tour,
+    public buchungsnr: number,
+    public tourtermin: Tourtermin,
     public preis: number,
     public besitzer: User,
   ) {
   }
 }
 
-export class Tour  {
+export class Ticket {
   constructor(
-    public id: number,
-    public name: string,
-    public rocket: Rocket,
-    public crew: Crewmember[],
+    public ticketnr: number,
+    public buchungsnr: number,
+    public sitzplatznr: number,
+    public tourterminnr: number
   ) {
   }
 }
 
-export class Rocket {
+export class Sitzplatz {
+  public selected: boolean;
+
   constructor(
+    public sitzplatznr: number,
+    public raketennr: number,
+    public preis: number,
+    public bezeichnung: string,
+    public belegt: boolean
+  ) {
+    this.selected = false;
+  }
+}
+
+export class Tour {
+  constructor(
+    public tournr: number,
+    public name: string,
+    public ort: string,
+    public preisklasse: number,
+    public beschreibung: string
+  ) {
+  }
+}
+
+export class Tourtermin {
+  public rocket: Rocket;
+  public crewmember: Crewmember;
+  public tour: Tour;
+  constructor(
+    public tourterminnr: number,
+    public datum: string,
+    public personalnr: number,
+    public raketennr: number,
+    public tournr: number,
+    rockets: Rocket[],
+    staff: Crewmember[],
+    tours: Tour[],
+    takenSeats: Sitzplatz[]
+  ) {
+    this.datum = this.datum.substring(0, 10);
+    this.rocket = rockets.find(r => r.raketennr == raketennr) || new Rocket(raketennr, '', '', '', '', '', '', '');
+    this.crewmember = staff.find(s => s.personalnr == personalnr) || new Crewmember(personalnr, '');
+    this.tour = tours.find(t => t.tournr == tournr) || new Tour(tournr, '', '', 0, '');
+    this.rocket.sitzplaetze.map(s => s.belegt = takenSeats.some(ss => ss.sitzplatznr == s.sitzplatznr));
+  }
+}
+
+export class Rocket {
+  public sitzplaetze: Array<Sitzplatz> = [];
+  constructor(
+    public raketennr: number,
     public name: string,
     public hoehe: string,
     public durchmesser: string,
     public schiffvolumen: string,
     public traegervolumen: string,
     public startnutzlastmasse: string,
-    public rueckkehrnutzlastmasse: string,
+    public rueckkehrnutzlastmasse: string
   ) {
+  }
+
+  public setSeats(sitzplaetze: Array<Sitzplatz>): void {
+    sitzplaetze.filter(s => s.raketennr == this.raketennr).forEach(s => {
+      if (!this.sitzplaetze.some(ss => ss.sitzplatznr == s.sitzplatznr)) {
+        this.sitzplaetze.push(s)
+      }
+    });
   }
 }
 
 export class Crewmember {
   constructor(
-    public id: number,
+    public personalnr: number,
     public name: string,
   ) {
   }
+}
+
+export enum RocketInfoType {
+  HOEHE,
+  DURCHMESSER,
+  SCHIFFVOLUMEN,
+  TRAEGERVOLUMEN,
+  STARTNUTZLASTMASSE,
+  RUECKKEHRNUTZLASTMASSE
 }

@@ -1,4 +1,4 @@
-<video class="fullscreen-video" autoplay muted loop>
+<video class="fullscreen-video" [autoplay]="true" [muted]="true" [loop]="true" #video (canplay)="video.play()">
   <source src="../../../../../assets/Mission/2395003_Space_Planet_Earth_1920x1080.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
@@ -7,6 +7,7 @@
   <div>
     <h1>SpaceTrain</h1>
     <p>Entdecke das Universum mit uns.</p>
+    <button (click)="gotoTickets()">Tickets</button>
   </div>
 </div>
 
@@ -23,7 +24,7 @@
 </video>
 
 <div class="containercountdown">
-  <app-countdown></app-countdown>
+  <app-countdown [countdownDate]="countdownDate"></app-countdown>
 </div>
 
 <div class="mission-text-container">
