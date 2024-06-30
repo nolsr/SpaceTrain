@@ -6,9 +6,9 @@
 
 
 .seat {
-    width: 3rem;
-    height: 3rem;
-    background-color: grey;
+    width: 6rem;
+    height: 6rem;
+    background-color: #1C4DA8;
     border-radius: 1rem;
     margin: 1rem;
     display: flex;
@@ -23,7 +23,7 @@
 }
 
 .taken {
-    background-color: #fe4727;
+    background-color: #323336;
     color: white;
     pointer-events: none;
 }

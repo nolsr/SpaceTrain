@@ -11,7 +11,7 @@
     position: absolute;
     width:75%;
     left: 50%;
-    bottom: -95vh;
+    bottom: -80vh;
     z-index: -1;
 }
 .video1 {
@@ -40,17 +40,28 @@
     width: 50%;
 }
 
-.Buttonblock{
+.Buttonblock {
     padding: 1% 0%;
     width: 50%;
-    display:flex;
+    display: flex;
     justify-content: left;
 }
 
 button {
-    padding: 0.5rem 3rem 0.1rem;
-    font-size: 1.5rem;
-    font-family: new-science;
-    font-weight: 300;
-    line-height: 3rem;
+    padding: 1rem 3rem;
+    font-size: 2vh;
+    letter-spacing: 0.2vh;
+    background: none; /* Kein Hintergrund */
+    border: 2px solid #27eefe;
+    color: rgb(255, 255, 255); /* Textfarbe */
+    cursor: pointer; /* Zeiger beim Hover über dem Button */
 }
+
+button:hover {
+    margin-top: -0.5vh;
+    margin-bottom: 0.5vh;
+    cursor: pointer;
+    background-color: #27eefe; /* Hintergrundfarbe beim Hover */
+    color: black; /* Textfarbe beim Hover */
+}
+

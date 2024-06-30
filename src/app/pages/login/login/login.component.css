@@ -24,16 +24,16 @@ label {
 }
 
 .invalid {
-    color: rgb(226, 67, 67);
-    border-color: rgb(226, 67, 67);
+    color: rgb(226, 67, 197);
+    border-color: rgb(226, 67, 197);
 }
 .invalid:focus {
     outline: none !important;
-    border-color: rgb(226, 67, 67) !important;
+    border-color: rgb(226, 67, 197) !important;
 }
 
 .invalid::placeholder {
-    color: rgb(226, 67, 67);
+    color: rgb(226, 67, 207);
 }
 
 input:focus {
@@ -65,10 +65,20 @@ button.login:not(:disabled):active {
     margin-top: 2px;
     margin-bottom: -2px;
     filter: brightness(0.7);
+    
+
 }
 
 button.login:disabled {
-    filter: grayscale(1);
+    font-family: new-science;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem; 
+    background-color: #1C4DA8;
+    color: white; 
+    border: 2px solid #1C4DA8; 
+    cursor: not-allowed; 
 }
 
 button.login:not(:disabled):hover {
@@ -99,7 +109,7 @@ button.login:not(:disabled):hover {
 }
 
 #circle1 {
-    top: calc(100vh - 20rem);
+    top: calc(100vh - 40rem);
     left: 55%;
 }
 
@@ -109,6 +119,6 @@ button.login:not(:disabled):hover {
 }
 
 .error {
-    color: rgb(226, 67, 67);
+    color: rgb(226, 67, 197);
     width: 20rem;
 }
