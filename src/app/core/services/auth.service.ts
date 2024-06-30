@@ -8,16 +8,14 @@ import { BehaviorSubject, Observable, Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  loggedInUser: User | null = null;
+  loggedInUser: User | null = {} as User;
   private userEndpoints = environment.endpoints.user;
-
-  private userChanged = new BehaviorSubject<User | null>(this.loggedInUser);
-  public userChanged$ = this.userChanged.asObservable();
 
   constructor(
     private apiService: ApiService,
     private ngZone: NgZone
-  ) { }
+  ) {
+  }
 
   public register(user: User): Observable<any> {
     return new Observable((observer) => {
@@ -47,7 +45,6 @@ export class AuthService {
   private setLoggedInUser(user: User) {
     this.ngZone.run(() => {
       this.loggedInUser = user;
-      this.userChanged.next(this.loggedInUser);
     });
     localStorage.setItem('user', JSON.stringify(user));
     console.log(this.loggedInUser);
@@ -61,7 +58,6 @@ export class AuthService {
       } else {
         this.loggedInUser = null;
       }
-      this.userChanged.next(this.loggedInUser);
     });
     console.log(this.loggedInUser);
   }

@@ -21,3 +21,9 @@
     background-color: #27eefe;
     color: black;
 }
+
+.taken {
+    background-color: #fe4727;
+    color: white;
+    pointer-events: none;
+}

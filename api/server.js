@@ -14,6 +14,7 @@ const rocketsRoutes = require("./routes/rockets.js");
 const toursRoutes = require("./routes/tours.js");
 const staffRoutes = require("./routes/staff.js");
 const userRoutes = require("./routes/user.js");
+const bookingRoutes = require("./routes/booking.js");
 
 bodyParser = require('body-parser');
 
@@ -34,6 +35,7 @@ app.use('/rockets', rocketsRoutes);
 app.use('/tours', toursRoutes);
 app.use('/staff', staffRoutes);
 app.use('/user', userRoutes);
+app.use('/booking', bookingRoutes)
 
 // Error Middleware
 app.use((err, req, res, next) => {

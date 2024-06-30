@@ -9,6 +9,7 @@ import { environment } from "../../../environment";
 })
 export class RocketsService {
   public rockets: Array<Rocket> = [];
+  public takenSeats: Array<Sitzplatz> = [];
   private rocketEndpoints = environment.endpoints.rockets;
 
   constructor(
@@ -20,6 +21,8 @@ export class RocketsService {
     return new Observable(observer => {
       this.getSeats().subscribe({
         next: (sitzplaetze: Array<Sitzplatz>) => {
+          console.log(sitzplaetze);
+          this.takenSeats = sitzplaetze.filter(s => s.belegt === true);
           sitzplaetze = sitzplaetze.map(s => new Sitzplatz(s.sitzplatznr, s.raketennr, s.preis, s.bezeichnung, s.belegt ?? false));
           this.apiService.get<Rocket[]>(`${this.rocketEndpoints.getAll}`).subscribe({
             next: (res: Array<Rocket>) => {
@@ -31,6 +34,7 @@ export class RocketsService {
                   rockets.push(rocket);
                 });
                 this.rockets = rockets;
+                console.log(this.rockets);
                 observer.next(this.rockets);
               });
             },

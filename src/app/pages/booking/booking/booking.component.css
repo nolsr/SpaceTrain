@@ -12,10 +12,6 @@ h4 {
     margin-top: 6rem;
 }
 
-.cost {
-  margin-bottom: 6rem;
-}
-
 button {
   padding: 0.5rem 1.5rem;
   font-size: 1.5rem;
@@ -26,7 +22,7 @@ button {
   animation: pulse 2s infinite;
 }
 
-button:hover {
+button:not(:disabled):hover {
   margin-top: -0.5rem;
   margin-bottom: 0.5rem;
   cursor: pointer;
@@ -34,6 +30,51 @@ button:hover {
   color: black;
 }
 
+button:disabled {
+  filter: grayscale(1);
+}
+
+.payment-wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  margin-bottom: 7rem;
+}
+
+.payment {
+  width: 9rem;
+  height: 4rem;
+  border-radius: 1rem;
+  position: relative;
+  display: flex;
+  border: 4px solid white;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  box-sizing: border-box;
+}
+
+.payment:not(:last-of-type) {
+  margin-right: 1rem;
+}
+
+.payment img {
+  height: auto;
+  width: 80%;
+}
+
+.payment .title {
+  position: absolute;
+  top: calc(100% + 1rem);
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.selectedPayment {
+  border: 4px solid #ffbd43;
+}
 
 .circle {
   position: absolute;

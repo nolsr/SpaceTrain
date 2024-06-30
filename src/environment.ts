@@ -16,6 +16,10 @@ export const environment = {
       getAll: '/touren',
       getById: '/touren',
     },
+    booking: {
+      getById: '/booking',
+      book: '/booking'
+    },
     rockets: {
       getAll: '/rockets',
       getById: '/rockets',

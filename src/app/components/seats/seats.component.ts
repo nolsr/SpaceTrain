@@ -11,6 +11,9 @@ export class SeatsComponent {
   @Output() selectedSeatCahnged = new EventEmitter<Sitzplatz>();
 
   public onSelectSeat(seat: Sitzplatz): void {
+    if (seat.belegt) {
+      return;
+    }
     this.seats[this.seats.findIndex(s => s.sitzplatznr === seat.sitzplatznr)].selected = !seat.selected;
     this.selectedSeatCahnged.emit(seat);
   }

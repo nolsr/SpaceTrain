@@ -11,9 +11,24 @@
 <app-seats [seats]="selectedTourtermin?.rocket?.sitzplaetze ?? []" (selectedSeatCahnged)="selectedSeatChanged()"></app-seats>
 
 <h4>Gesamtpreis</h4>
-<span class="cost">{{ totalCost }}</span>
+<span>{{ totalCost }}</span>
 
-<button (click)="bookTickets()">Jetzt buchen</button>
+<h4>Zahlungsoptionen</h4>
+<div class="payment-wrapper">
+    <div class="payment" [ngClass]="{'selectedPayment': selectedPayment == 'paypal' }" (click)="selectedPayment = 'paypal'">
+        <img src="assets/Bezahlung/paypal.png" alt="PayPal">
+        <div class="title">PayPal</div>
+    </div>
+    <div class="payment" [ngClass]="{'selectedPayment': selectedPayment == 'visa' }" (click)="selectedPayment = 'visa'">
+        <img src="assets/Bezahlung/visa.png" alt="PayPal">
+        <div class="title">Visa</div>
+    </div>
+</div>
+
+<button (click)="bookTickets()" [disabled]="totalCost == '0.00 €'">Jetzt buchen</button>
 
 <img id="circle1" class="circle" src="../../../../assets/Kreiselemente/Kreise-04(Nils).svg" alt="Kreisgrafik">
 <img id="circle2" class="circle" src="../../../../assets/Kreiselemente/Kreise-04(Nils).svg" alt="Kreisgrafik">
+
+<app-popup *ngIf="showLoginError" [title]="'Fehler'" [text]="'Sie müssen angemeldet sein um Tickets zu buchen!'" (close)="showLoginError = false"></app-popup>
+<app-popup *ngIf="showSuccess" [title]="'Erfolg'" [text]="'Vielen Dank für Ihre Bestellung. Sie können Ihre Tickets unter \'Profil\' abrufen.'" (close)="onCloseBookingReceipt()"></app-popup>

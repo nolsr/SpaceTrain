@@ -11,6 +11,7 @@ import { ComponentsModule } from "./components/components.module";
 import { BookingModule } from "./pages/booking/booking.module";
 import { ToursModule } from "./pages/tours/tours.module";
 import { TourdatePipe } from './pipes/tourdate.pipe';
+import { AuthService } from './core/services/auth.service';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { TourdatePipe } from './pipes/tourdate.pipe';
   ],
   providers: [
     provideClientHydration(),
-    TourdatePipe
+    TourdatePipe,
+    AuthService
   ],
   bootstrap: [AppComponent],
 })

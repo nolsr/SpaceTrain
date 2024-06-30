@@ -1,5 +1,5 @@
 import { Injectable, NgZone } from '@angular/core';
-import { Crewmember, Rocket, Tour, Tourtermin } from '../spacetrain.model';
+import { Crewmember, Rocket, Sitzplatz, Tour, Tourtermin } from '../spacetrain.model';
 import { environment } from '../../../environment';
 import { ApiService } from './api.service';
 import { Observable } from 'rxjs';
@@ -39,14 +39,14 @@ export class ToursService {
     return this.apiService.get<any>(`${this.toursEndpoints.getCountdown}`);
   }
 
-  public getToursdatesByTourId(id: number, rockets: Rocket[], staff: Crewmember[], tours: Tour[]): Observable<any> {
+  public getToursdatesByTourId(id: number, rockets: Rocket[], staff: Crewmember[], tours: Tour[], takenSeats: Sitzplatz[]): Observable<any> {
     return new Observable(observer => {
       this.apiService.get<Tourtermin[]>(`${this.toursEndpoints.getTourdatesByTournr}/${id}`).subscribe({
         next: (res: Array<Tourtermin>) => {
           this.ngZone.run(() => {
             const tourdates: Tourtermin[] = [];
             res.forEach(tour => {
-              tourdates.push(new Tourtermin(tour.tourterminnr, tour.datum, tour.personalnr, tour.raketennr, tour.tournr, rockets, staff, tours));
+              tourdates.push(new Tourtermin(tour.tourterminnr, tour.datum, tour.personalnr, tour.raketennr, tour.tournr, rockets, staff, tours, takenSeats));
             });
             this.tourdates = tourdates;
             observer.next(this.tourdates);

@@ -67,12 +67,14 @@ export class Tourtermin {
     public tournr: number,
     rockets: Rocket[],
     staff: Crewmember[],
-    tours: Tour[]
+    tours: Tour[],
+    takenSeats: Sitzplatz[]
   ) {
     this.datum = this.datum.substring(0, 10);
     this.rocket = rockets.find(r => r.raketennr == raketennr) || new Rocket(raketennr, '', '', '', '', '', '', '');
     this.crewmember = staff.find(s => s.personalnr == personalnr) || new Crewmember(personalnr, '');
     this.tour = tours.find(t => t.tournr == tournr) || new Tour(tournr, '', '', 0, '');
+    this.rocket.sitzplaetze.map(s => s.belegt = takenSeats.some(ss => ss.sitzplatznr == s.sitzplatznr));
   }
 }
 
@@ -91,7 +93,11 @@ export class Rocket {
   }
 
   public setSeats(sitzplaetze: Array<Sitzplatz>): void {
-    this.sitzplaetze = sitzplaetze.filter(s => s.raketennr == this.raketennr);
+    sitzplaetze.filter(s => s.raketennr == this.raketennr).forEach(s => {
+      if (!this.sitzplaetze.some(ss => ss.sitzplatznr == s.sitzplatznr)) {
+        this.sitzplaetze.push(s)
+      }
+    });
   }
 }
 
