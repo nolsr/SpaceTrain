@@ -1,4 +1,5 @@
-<app-headline [title]="isLogin ? 'Anmelden' : 'Registrieren'" [videoPath]="'Buchung/1237171_Abstract_Liquid_Backgrounds_1920x1080.mp4'"></app-headline>
+<app-headline [title]="isLogin ? 'Anmelden' : 'Registrieren'"
+    [videoPath]="'Buchung/1237171_Abstract_Liquid_Backgrounds_1920x1080.mp4'"></app-headline>
 
 <form [formGroup]="loginForm" (ngSubmit)="login()" class="login-form" *ngIf="isLogin">
     <div class="input-wrapper">
@@ -11,44 +12,55 @@
             [ngClass]="{'invalid': loginForm.controls['password'].errors && !loginForm.controls['password'].pristine}"
             placeholder="Passwort">
     </div>
-    <button class="login" [disabled]="loginForm.invalid" (click)="login()">Anmelden</button>
+    <button class="login" [disabled]="loginForm.invalid">Anmelden</button>
     <div class="secondary" (click)="toggleLogin()">Registrieren</div>
 </form>
 
 <form [formGroup]="registerForm" (ngSubmit)="register()" class="login-form" *ngIf="!isLogin">
     <div class="input-wrapper">
-        <input name="vorname" type="vorname" formControlName="vorname" required
+        <input name="vorname" type="forename" formControlName="vorname" required
             [ngClass]="{'invalid': registerForm.controls['vorname'].errors && !registerForm.controls['vorname'].pristine}"
             placeholder="Vorname">
+            <div class="error" *ngIf="!registerForm.controls['vorname'].pristine && registerForm.controls['vorname'].errors">Vorname muss mindestens 3 Zeichen lang sein</div>
     </div>
     <div class="input-wrapper">
-        <input name="nachname" type="nachname" formControlName="nachname" required
-            [ngClass]="{'invalid': registerForm.controls['nachname'].errors && !registerForm.controls['nachname'].pristine}"
+        <input name="nachname" type="surname" formControlName="name" required
+            [ngClass]="{'invalid': registerForm.controls['name'].errors && !registerForm.controls['name'].pristine}"
             placeholder="Nachname">
+            <div class="error" *ngIf="!registerForm.controls['name'].pristine && registerForm.controls['name'].errors">Nachname muss mindestens 3 Zeichen lang sein</div>
     </div>
     <div class="input-wrapper">
-        <input name="adresse" type="adresse" formControlName="adresse" required
+        <input name="adresse" type="adress" formControlName="adresse" required
             [ngClass]="{'invalid': registerForm.controls['adresse'].errors && !registerForm.controls['adresse'].pristine}"
             placeholder="Adresse">
+            <div class="error" *ngIf="!registerForm.controls['adresse'].pristine && registerForm.controls['adresse'].errors">Adresse muss mindestens 5 Zeichen lang sein</div>
     </div>
     <div class="input-wrapper">
         <input name="email" type="email" formControlName="email" required
             [ngClass]="{'invalid': registerForm.controls['email'].errors && !registerForm.controls['email'].pristine}"
             placeholder="Email">
+            <div class="error" *ngIf="!registerForm.controls['email'].pristine && registerForm.controls['email'].errors">Email muss mindestens 5 Zeichen lang sein</div>
     </div>
     <div class="input-wrapper">
         <input name="password" type="password" formControlName="password" required
             [ngClass]="{'invalid': registerForm.controls['password'].errors && !registerForm.controls['password'].pristine}"
             placeholder="Passwort">
+            <div class="error" *ngIf="!registerForm.controls['password'].pristine && registerForm.controls['password'].errors">Passwort muss mindestens 8 Zeichen lang sein</div>
     </div>
     <div class="input-wrapper">
-        <input name="confirmPassword" type="confirmPassword" formControlName="confirmPassword" required
+        <input name="confirmPassword" type="password" formControlName="confirmPassword" required
             [ngClass]="{'invalid': registerForm.controls['confirmPassword'].errors && !registerForm.controls['confirmPassword'].pristine}"
             placeholder="Passwort wiederholen">
+        <div class="error" *ngIf="!registerForm.controls['confirmPassword'].pristine &&
+                    !registerForm.controls['password'].pristine &&
+                    registerForm.controls['confirmPassword'].errors">
+            Passwörter stimmen nicht überein</div>
     </div>
-    <button class="login" [disabled]="registerForm.invalid" (click)="login()">Registrieren</button>
+    <button class="login" [disabled]="registerForm.invalid">Registrieren</button>
     <div class="secondary" (click)="toggleLogin()">Anmelden</div>
 </form>
 
 <img id="circle1" class="circle" src="../../../../assets/Kreiselemente/Kreise-04(Nils).svg" alt="Kreisgrafik">
 <img id="circle2" class="circle" src="../../../../assets/Kreiselemente/Kreise-04(Nils).svg" alt="Kreisgrafik">
+
+<app-popup *ngIf="userMessage.length > 0" [title]="'Fehler'" [text]="userMessage" (close)="onClosePopup()"></app-popup>

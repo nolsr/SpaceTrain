@@ -17,7 +17,6 @@ export class MissionComponent implements OnInit {
   ngOnInit(): void {
     this.toursService.getCountdownDate().subscribe(res => {
       this.countdownDate = (res[0]?.datum ?? '2024-12-31').substring(0, 10);
-      console.log(this.countdownDate);
     });
   }
 

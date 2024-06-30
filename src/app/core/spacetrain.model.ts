@@ -2,6 +2,8 @@ export class User {
   constructor(
     public kundennr: number,
     public name: string,
+    public vorname: string,
+    public adresse: string,
     public email: string,
     public password: string
   ) {

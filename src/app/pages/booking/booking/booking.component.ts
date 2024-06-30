@@ -46,7 +46,6 @@ export class BookingComponent implements OnInit, OnDestroy {
               next: (rockets: Array<Rocket>) => {
                 this.toursService.getToursdatesByTourId(this.tour, rockets, staff, tours).subscribe({
                   next: () => {
-                    console.log(this.toursService.tourdates);
                     this.selectedTourterminChanged();
                   }
                 });
@@ -76,7 +75,6 @@ export class BookingComponent implements OnInit, OnDestroy {
   }
 
   private calcTotalPrice() {
-    console.log(this.selectedTourtermin);
     if (!this.selectedTourtermin.tour) {
       return;
     }

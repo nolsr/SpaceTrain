@@ -13,6 +13,7 @@ const allowCrossDomain = (req, res, next) => {
 const rocketsRoutes = require("./routes/rockets.js");
 const toursRoutes = require("./routes/tours.js");
 const staffRoutes = require("./routes/staff.js");
+const userRoutes = require("./routes/user.js");
 
 bodyParser = require('body-parser');
 
@@ -32,6 +33,7 @@ app.use(express.static(path.join(__dirname, '/dist/spacetrain')));
 app.use('/rockets', rocketsRoutes);
 app.use('/tours', toursRoutes);
 app.use('/staff', staffRoutes);
+app.use('/user', userRoutes);
 
 // Error Middleware
 app.use((err, req, res, next) => {

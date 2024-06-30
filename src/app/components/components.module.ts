@@ -9,6 +9,7 @@ import { TourdatePipe } from "../pipes/tourdate.pipe";
 import { HeadlineComponent } from './headline/headline.component';
 import { SeatsComponent } from './seats/seats.component';
 import { SeatPipe } from '../pipes/seat.pipe';
+import { PopupComponent } from './popup/popup.component';
 
 @NgModule({
     declarations: [
@@ -17,7 +18,8 @@ import { SeatPipe } from '../pipes/seat.pipe';
         NavbarComponent,
         TourSelectorComponent,
         HeadlineComponent,
-        SeatsComponent
+        SeatsComponent,
+        PopupComponent
     ],
     exports: [
         CalendarComponent,
@@ -25,7 +27,8 @@ import { SeatPipe } from '../pipes/seat.pipe';
         CountdownComponent,
         NavbarComponent,
         HeadlineComponent,
-        SeatsComponent
+        SeatsComponent,
+        PopupComponent
     ],
     imports: [
         CommonModule,

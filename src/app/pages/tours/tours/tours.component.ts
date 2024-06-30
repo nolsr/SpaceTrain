@@ -12,7 +12,7 @@ export class ToursComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.toursService.getTours();
+    this.toursService.getTours().subscribe();
   }
 
   public gotoTickets(tour: number) {

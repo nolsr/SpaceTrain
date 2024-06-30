@@ -32,6 +32,10 @@ label {
     border-color: rgb(226, 67, 67) !important;
 }
 
+.invalid::placeholder {
+    color: rgb(226, 67, 67);
+}
+
 input:focus {
     outline: none;
 }
@@ -102,4 +106,9 @@ button.login:not(:disabled):hover {
 #circle2 {
     top: calc(100vh + 10rem);
     right: 60%;
+}
+
+.error {
+    color: rgb(226, 67, 67);
+    width: 20rem;
 }
