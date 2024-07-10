@@ -27,7 +27,7 @@ router.get('/dates/:tournr', async (req, res) => {
 
 router.get('/next', async (req, res) => {
     try {
-        db.query(`SELECT datum FROM tourtermin WHERE datum >= CURDATE() ORDER BY datum ASC LIMIT 1;`, (error, result) => {
+        db.query(`SELECT datum FROM tourtermin WHERE datum >= CURDATE() + INTERVAL 2 DAY ORDER BY datum ASC LIMIT 1;`, (error, result) => {
             if (error) throw error;
             res.status(200).json(result);
         });

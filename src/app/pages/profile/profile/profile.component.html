@@ -1,0 +1,22 @@
+<app-headline [title]="'Profil'"
+    [videoPath]="'Buchung/1237171_Abstract_Liquid_Backgrounds_1920x1080.mp4'"></app-headline>
+
+<h3>Tickets</h3>
+<span *ngIf="ticketsService.tickets.length == 0">Sie haben noch keine Tickets gebucht.</span>
+<app-ticket *ngFor="let ticket of ticketsService.tickets" [ticket]="ticket" (refund)="onRefund(ticket.ticketnr)"></app-ticket>
+
+<div class="changes">
+    <h3>Nutzerdaten ändern</h3>
+    <form [formGroup]="changeForm" (ngSubmit)="saveChanges()">
+        <div class="input-wrapper">
+            <input name="email" type="email" formControlName="email" required
+                [ngClass]="{'invalid': changeForm.controls['email'].errors && !changeForm.controls['email'].pristine}"
+                placeholder="Email">
+        </div>
+        <button class="save" [disabled]="changeForm.invalid">Speichern</button>
+    </form>
+</div>
+
+<button (click)="handleLogout()">Abmelden</button>
+
+<app-popup *ngIf="userMessage.length > 0" [title]="'Success'" [text]="userMessage" (close)="onClosePopup()"></app-popup>

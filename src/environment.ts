@@ -11,6 +11,7 @@ export const environment = {
     user: {
       login: '/user/login',
       register: '/user',
+      update: '/user'
     },
     touren: {
       getAll: '/touren',
@@ -29,6 +30,10 @@ export const environment = {
       getAll: '/tours',
       getTourdatesByTournr: '/tours/dates',
       getCountdown: '/tours/next'
+    },
+    tickets: {
+      getAll: '/tickets',
+      delete: '/tickets'
     },
     staff: {
       getAll: '/staff'

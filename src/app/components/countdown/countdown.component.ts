@@ -26,6 +26,7 @@ export class CountdownComponent {
 
   updateRemainingTime() {
     const now = new Date().getTime();
+    console.log(this.countdownDate);
     const distance = new Date(this.countdownDate + 'T00:00:00').getTime() - now;
 
     if (distance < 0) {

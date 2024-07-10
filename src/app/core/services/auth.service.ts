@@ -42,6 +42,16 @@ export class AuthService {
     });
   }
 
+  public updateEmail(email: string): Observable<any> {
+    return new Observable((observer) => {
+      this.apiService.put<User>(`${this.userEndpoints.update}/${this.loggedInUser?.kundennr}`, {email}).subscribe({
+        next: (res: any) => {
+          observer.next();
+        }, error: (error) => observer.error(error)
+      });
+    });
+  }
+
   private setLoggedInUser(user: User) {
     this.ngZone.run(() => {
       this.loggedInUser = user;

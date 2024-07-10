@@ -25,8 +25,15 @@ export class Ticket {
     public ticketnr: number,
     public buchungsnr: number,
     public sitzplatznr: number,
-    public tourterminnr: number
+    public tourterminnr: number,
+    public preis: number,
+    public bezeichnung: string,
+    public name: string,
+    public tourname: string,
+    public datum: string,
+    public ort: string
   ) {
+    this.datum = (this.datum.substring(8, 10) + this.datum.substring(4, 8) + this.datum.substring(0, 4)).replaceAll('-', '.');
   }
 }
 

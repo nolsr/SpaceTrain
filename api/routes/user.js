@@ -69,4 +69,21 @@ router.post('/', async (req, res) => {
     }
 });
 
+router.put('/:id', async (req, res) => {
+    try {
+        const id = req.params['id'];
+        const email = req.body['email'];
+        if (!email) {
+            res.status(400).json({ message: 'Missing email' });
+            return;
+        }
+        db.query('UPDATE kunde SET email=? WHERE kundennr = ?', [email, id], (error, result) => {
+            if (error) throw error;
+            res.status(200).json();
+        });
+    } catch (err) {
+        res.status(500).json({ message: err.message })
+    }
+});
+
 module.exports = router;

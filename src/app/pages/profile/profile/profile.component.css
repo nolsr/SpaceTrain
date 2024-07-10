@@ -1,0 +1,97 @@
+:host {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+button {
+    padding: 0.5rem 1.5rem;
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+    background-color: transparent;
+    border: 2px solid #27eefe;
+    color: #27eefe;
+    animation: pulse 2s infinite;
+}
+
+button:not(:disabled):hover {
+    margin-top: -0.5rem;
+    margin-bottom: 0.5rem;
+    cursor: pointer;
+    background-color: #27eefe;
+    color: black;
+}
+
+button:disabled {
+    filter: grayscale(1);
+}
+
+input {
+    width: 20rem;
+    border: 1px solid rgb(194, 194, 194);
+    border-radius: 4px;
+    padding: 0.8rem;
+    font-size: 1rem;
+    margin: 0.75rem 0;
+    margin-bottom: 2rem;
+}
+
+.invalid {
+    color: rgb(226, 67, 67);
+    border-color: rgb(226, 67, 67);
+}
+.invalid:focus {
+    outline: none !important;
+    border-color: rgb(226, 67, 67) !important;
+}
+
+.invalid::placeholder {
+    color: rgb(226, 67, 67);
+}
+
+input:focus {
+    outline: none;
+}
+
+input::placeholder {
+    font-family: new-science;
+}
+
+.changes { 
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid white;
+    border-radius: 1rem;
+    margin: 3rem 0;
+}
+
+
+button.save {
+    width: 20rem;
+    height: 3rem;
+    border: 2px solid #27eefe;
+    border-radius: 4px;
+    color: #27eefe;
+    font-size: 1.5rem;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+button.save:not(:disabled):active {
+    margin-top: 2px;
+    margin-bottom: -2px;
+    filter: brightness(0.7);
+}
+
+button.save:disabled {
+    filter: grayscale(1);
+}
+
+button.save:not(:disabled):hover {
+    margin-top: -0.5rem;
+    margin-bottom: 0.5rem;
+    cursor: pointer;
+    background-color: #27eefe;
+    color: black;
+}

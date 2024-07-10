@@ -10,6 +10,7 @@ import { HeadlineComponent } from './headline/headline.component';
 import { SeatsComponent } from './seats/seats.component';
 import { SeatPipe } from '../pipes/seat.pipe';
 import { PopupComponent } from './popup/popup.component';
+import { TicketComponent } from './ticket/ticket.component';
 
 @NgModule({
     declarations: [
@@ -19,6 +20,7 @@ import { PopupComponent } from './popup/popup.component';
         TourSelectorComponent,
         HeadlineComponent,
         SeatsComponent,
+        TicketComponent,
         PopupComponent
     ],
     exports: [
@@ -28,6 +30,7 @@ import { PopupComponent } from './popup/popup.component';
         NavbarComponent,
         HeadlineComponent,
         SeatsComponent,
+        TicketComponent,
         PopupComponent
     ],
     imports: [

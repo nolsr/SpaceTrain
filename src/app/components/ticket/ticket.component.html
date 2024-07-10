@@ -1,0 +1,14 @@
+<div class="border-left"></div>
+<div class="ticket-left">
+    A
+</div>
+<div class="ticket">
+    <div class="title">Spacetrain</div>
+    <div class="tour">{{ ticket.tourname }}</div>
+    <div class="rocket">{{ ticket.name }}</div>
+    <div class="date">{{ ticket.datum }}</div>
+    <div class="price">{{ ticket.preis }}€</div>
+</div>
+<div class="border-right"></div>
+
+<div class="refund" (click)="refund.emit()">Stornieren</div>

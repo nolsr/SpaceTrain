@@ -1,0 +1,110 @@
+:host {
+    position: relative;
+    display: flex;
+    margin-bottom: 2rem;
+    --bg: rgba(39, 107, 254, 0.3);
+    --height: 15rem;
+}
+
+:host > div {
+    height: var(--height);
+}
+
+.border-left {
+    border-radius: 1rem 0 0 1rem;
+    overflow: hidden;
+    position: relative;
+    width: 2rem;
+}
+
+.border-left::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    box-shadow: 0 0 0 2000px var(--bg);
+}
+
+
+.border-right {
+    border-radius: 0 1rem 1rem 0;
+    overflow: hidden;
+    position: relative;
+    width: 2rem;
+}
+
+.border-right::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translate(50%, -50%);
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    box-shadow: 0 0 0 2000px var(--bg);
+}
+
+.ticket-left {
+    width: 7rem;
+    background-color: var(--bg);
+    position: relative;
+    margin-right: 0.5rem;
+    padding: 1rem;
+    font-size: 3rem;
+    font-family: ethnocentric, sans-serif;
+}
+
+.ticket-left::after {
+    content: '';
+    position: absolute;
+    right: -0.5rem;
+    top: 0;
+    height: var(--height);
+    border-right: 0.5rem solid var(--bg);
+    border-width: 0 0.5rem 0 0;
+    border-style: dashed;
+}
+
+.ticket {
+    width: 30rem;
+    background-color: var(--bg);
+    position: relative;
+}
+
+.refund {
+    transform: rotate(-90deg);
+    position: absolute;
+    right: 0;
+    margin-right: -11rem;
+}
+
+.refund:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.title {
+    font-size: 2rem;
+    font-family: ethnocentric, sans-serif;
+}
+
+.tour {
+
+}
+
+.rocket {
+
+}
+
+.date {
+
+}
+
+.price {
+
+}
